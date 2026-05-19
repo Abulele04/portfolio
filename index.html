@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Abulele Ntshiyantshiya Portfolio</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f4f7fc;
+      color:#111827;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      background:#02142b;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    nav h1{
+      color:#3b82f6;
+      font-size:30px;
+      font-weight:bold;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:35px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#3b82f6;
+    }
+
+    /* HERO */
+
+    .hero{
+      background:linear-gradient(135deg,#02142b,#003b8b);
+      padding:70px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+      color:white;
+    }
+
+    .hero-image img{
+      width:380px;
+      border-radius:20px;
+      box-shadow:0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero-text h4{
+      color:#60a5fa;
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .hero-text h2{
+      font-size:60px;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero-text h3{
+      color:#3b82f6;
+      font-size:30px;
+      margin-bottom:25px;
+    }
+
+    .line{
+      width:80px;
+      height:5px;
+      background:#3b82f6;
+      border-radius:10px;
+      margin-bottom:30px;
+    }
+
+    .hero-text p{
+      font-size:20px;
+      line-height:1.9;
+      margin-bottom:35px;
+      max-width:850px;
+    }
+
+    /* CONTACT GRID */
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:25px;
+    }
+
+    .contact-card{
+      background:rgba(255,255,255,0.08);
+      padding:20px;
+      border-radius:15px;
+      backdrop-filter:blur(5px);
+    }
+
+    .contact-card h5{
+      font-size:20px;
+      margin-bottom:10px;
+      color:#60a5fa;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:70px 8%;
+    }
+
+    .section-title{
+      font-size:40px;
+      color:#0f172a;
+      margin-bottom:40px;
+      position:relative;
+      display:inline-block;
+    }
+
+    .section-title::after{
+      content:'';
+      width:60%;
+      height:4px;
+      background:#2563eb;
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      border-radius:10px;
+    }
+
+    /* GRID */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    /* CARDS */
+
+    .card{
+      background:white;
+      padding:35px;
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card h3{
+      color:#003b8b;
+      margin-bottom:20px;
+      font-size:28px;
+    }
+
+    .card p{
+      font-size:18px;
+      line-height:1.8;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .skill{
+      padding:25px;
+      border-radius:16px;
+      font-weight:bold;
+      font-size:18px;
+      color:#111827;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .skill:nth-child(1){background:#dbeafe;}
+    .skill:nth-child(2){background:#dcfce7;}
+    .skill:nth-child(3){background:#ede9fe;}
+    .skill:nth-child(4){background:#fef3c7;}
+    .skill:nth-child(5){background:#fee2e2;}
+    .skill:nth-child(6){background:#e0e7ff;}
+
+    /* CERTIFICATIONS */
+
+    .certifications{
+      background:white;
+      border-radius:20px;
+      padding:40px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .certifications ul{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:20px;
+      list-style:none;
+    }
+
+    .certifications li{
+      background:#f8fafc;
+      padding:20px;
+      border-radius:12px;
+      font-size:18px;
+      border-left:5px solid #2563eb;
+    }
+
+    /* REFERENCES */
+
+    .references{
+      background:linear-gradient(135deg,#02142b,#003b8b);
+      color:white;
+      padding:80px 8%;
+    }
+
+    .references .section-title{
+      color:white;
+    }
+
+    .reference-card{
+      background:rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:20px;
+      backdrop-filter:blur(6px);
+    }
+
+    .reference-card h3{
+      color:#60a5fa;
+      margin-bottom:15px;
+    }
+
+    .reference-card p{
+      line-height:1.9;
+      font-size:18px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#02142b;
+      text-align:center;
+      color:white;
+      padding:25px;
+      font-size:18px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero-image img{
+        width:300px;
+      }
+
+      .hero-text h2{
+        font-size:42px;
+      }
+
+      .hero-text p{
+        font-size:18px;
+      }
+
+      .line{
+        margin:auto auto 30px auto;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <h1>Abulele Ntshiyantshiya</h1>
+
+    <ul>
+      <li><a href="#about">Home</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#references">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="about">
+
+    <div class="hero-image">
+
+      <!-- YOUR IMAGE -->
+      <img src="Abulele Picture.jpeg" alt="Abulele Picture">
+
+    </div>
+
+    <div class="hero-text">
+
+      <h4>Hello, I'm</h4>
+
+      <h2>Abulele Ntshiyantshiya</h2>
+
+      <h3>IT Support | Networking | Cybersecurity | Web Development</h3>
+
+      <div class="line"></div>
+
+      <p>
+        I am a dedicated and motivated Information Technology graduate
+        with strong skills in networking, IT support, cybersecurity,
+        and web development. I am seeking entry-level opportunities
+        where I can apply my knowledge, gain practical experience,
+        and grow within the IT industry.
+      </p>
+
+      <div class="contact-grid">
+
+        <div class="contact-card">
+          <h5>Phone</h5>
+          <p>063 860 0603</p>
+        </div>
+
+        <div class="contact-card">
+          <h5>Email</h5>
+          <p>abulelentshiyantshiya@gmail.com</p>
+        </div>
+
+        <div class="contact-card">
+          <h5>Address</h5>
+          <p>East London, South Africa</p>
+        </div>
+
+        <div class="contact-card">
+          <h5>GitHub</h5>
+          <p>github.com/Abulele04</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+
+    <h2 class="section-title">Education</h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>iYunivesithi Walter Sisulu</h3>
+
+        <p>
+          Diploma in ICT Support Services<br><br>
+
+          Completed: 2025
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Vukayibambe Secondary School</h3>
+
+        <p>
+          National Senior Certificate – Bachelor’s Pass<br><br>
+
+          Completed: 2021
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills">
+
+      <div class="skill">IT Support & Troubleshooting</div>
+
+      <div class="skill">Computer Networking (LAN/WAN, TCP/IP)</div>
+
+      <div class="skill">Cybersecurity Fundamentals</div>
+
+      <div class="skill">Web Development (HTML, CSS)</div>
+
+      <div class="skill">Good Analytical Skills</div>
+
+      <div class="skill">Strong Teamwork & Collaboration</div>
+
+    </div>
+
+  </section>
+
+  <!-- CERTIFICATIONS -->
+
+  <section id="certifications">
+
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="certifications">
+
+      <ul>
+
+        <li>CCNAv7: Introduction to Networks</li>
+
+        <li>Introduction to Cybersecurity</li>
+
+        <li>Cyber Active Defense Professional (CADP)</li>
+
+        <li>Responsive Web Design</li>
+
+        <li>IT Customer Support Basics</li>
+
+        <li>Cloud Service Computing Micro-Certification</li>
+
+        <li>Introduction to Data Science</li>
+
+        <li>Fundamental Cloud and DevOps Training Program</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  <!-- REFERENCES -->
+
+  <section class="references" id="references">
+
+    <h2 class="section-title">References</h2>
+
+    <div class="grid">
+
+      <div class="reference-card">
+
+        <h3>Mr. J Okuthe</h3>
+
+        <p>
+          Lecturer – Walter Sisulu University<br><br>
+
+          Email: jokuthe@wsu.ac.za
+        </p>
+
+      </div>
+
+      <div class="reference-card">
+
+        <h3>Mr. Makwande</h3>
+
+        <p>
+          Teacher – Vukayibambe Secondary School<br><br>
+
+          Contact: 076 571 7293
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Abulele Ntshiyantshiya | All Rights Reserved
+
+  </footer>
+
+</body>
+</html>
