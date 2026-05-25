@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abulele Ntshiyantshiya Portfolio</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#020b2d;
+    color:white;
+}
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 5%;
+    z-index:1000;
+}
+
+.logo{
+    font-size:35px;
+    font-weight:bold;
+    color:#2f8cff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#2f8cff;
+}
+
+.hero{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns: 0.9fr 1.2fr 0.9fr;
+    align-items:center;
+    gap:35px;
+    padding:120px 5%;
+    background:
+    radial-gradient(circle at top left,#0d2dff33,transparent 30%),
+    radial-gradient(circle at bottom right,#00aaff22,transparent 30%),
+    #020b2d;
+}
+
+.hero-img{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-img img{
+    width:100%;
+    max-width:360px;
+    border-radius:25px;
+    border:2px solid #1f6fff;
+    box-shadow:
+    0 0 15px #1f6fff,
+    0 0 40px rgba(0,123,255,0.4);
+}
+
+.hero-text h3{
+    color:#4da3ff;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.hero-text h1{
+    font-size:75px;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero-text h2{
+    color:#2f8cff;
+    margin-bottom:25px;
+    line-height:1.4;
+}
+
+.hero-text p{
+    color:#d9d9d9;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.info-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(0,123,255,0.4);
+}
+
+.info-card i{
+    font-size:28px;
+    color:#4da3ff;
+}
+
+.contact-side{
+    background:linear-gradient(145deg,#08153f,#020b2d);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:30px;
+    padding:35px;
+    backdrop-filter:blur(10px);
+    box-shadow:
+    0 0 15px rgba(0,123,255,0.2),
+    0 0 35px rgba(0,123,255,0.1);
+}
+
+.contact-side h2{
+    margin-bottom:25px;
+}
+
+.side-item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:25px;
+    text-decoration:none;
+    padding:15px;
+    border-radius:18px;
+    transition:0.3s;
+}
+
+.side-item:hover{
+    background:rgba(255,255,255,0.05);
+    transform:translateX(5px);
+    box-shadow:0 0 20px rgba(0,123,255,0.3);
+}
+
+.side-item i{
+    color:#4da3ff;
+    font-size:24px;
+}
+
+.side-item h4{
+    margin-bottom:5px;
+}
+
+.side-item p{
+    color:#bbb;
+}
+
+section{
+    padding:80px 5%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:45px;
+    color:#4da3ff;
+    margin-bottom:50px;
+}
+
+.cards,
+.skills,
+.references{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.card,
+.skill,
+.reference-card{
+    background:linear-gradient(145deg, rgba(16,34,92,0.95), rgba(5,12,45,0.95));
+    border:1px solid rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:25px;
+    transition:0.3s;
+    backdrop-filter:blur(10px);
+}
+
+.card:hover,
+.skill:hover,
+.reference-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(0,123,255,0.4);
+}
+
+.card h3,
+.reference-card h3{
+    color:#4da3ff;
+    margin-bottom:15px;
+}
+
+.certifications ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    list-style:none;
+}
+
+.certifications li{
+    background:linear-gradient(145deg,#10245c,#050c2d);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:20px;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.certifications li:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(0,123,255,0.4);
+}
+
+.certifications li::before{
+    content:'';
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:rgba(77,163,255,0.1);
+    border-radius:50%;
+    top:-40px;
+    right:-40px;
+}
+
+.floating-buttons{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    z-index:999;
+}
+
+.float-btn{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#2f8cff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    box-shadow:0 0 20px rgba(0,123,255,0.4);
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#000814;
+}
+
+@media(max-width:1100px){
+
+.hero{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.info-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-text h1{
+    font-size:50px;
+}
+@keyframes glow{
+    0%{
+        box-shadow:0 0 5px rgba(0,123,255,0.2);
+    }
+
+    50%{
+        box-shadow:0 0 25px rgba(0,123,255,0.5);
+    }
+
+    100%{
+        box-shadow:0 0 5px rgba(0,123,255,0.2);
+    }
+}
+
+.info-card,
+.card,
+.skill,
+.reference-card,
+.certifications li{
+    animation:glow 4s infinite;
+}
+nav ul li a::after{
+    content:'';
+    display:block;
+    width:0%;
+    height:2px;
+    background:#4da3ff;
+    transition:0.3s;
+    margin-top:5px;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Abulele Ntshiyantshiya</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-img">
+    <img src="Abulele Picture.jpeg" alt="Profile Picture">
+</div>
+
+<div class="hero-text">
+
+    <h3>Hello, I'm</h3>
+
+    <h1>Abulele<br>Ntshiyantshiya</h1>
+
+    <h2>
+        IT Support | Networking | Cybersecurity |
+        Web Development
+    </h2>
+
+    <p>
+        I am a dedicated and motivated ICT graduate with strong skills in networking,
+        IT support, cybersecurity, and web development.
+        I am seeking entry-level opportunities where I can apply my knowledge,
+        gain practical experience, and grow within the IT industry.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <i class="fas fa-phone"></i>
+            <div>
+                <h4>Phone</h4>
+                <p><a href="tel:+27638600603" style="color:#4da3ff;text-decoration:none;">063 860 0603</a></p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+                <h4>Address</h4>
+                <p>East London, South Africa</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <i class="fas fa-envelope"></i>
+            <div>
+                <h4>Email</h4>
+                <p><a href="mailto:abulelentshiyantshiya@gmail.com" style="color:#4da3ff;text-decoration:none;">abulelentshiyantshiya@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <i class="fab fa-github"></i>
+            <div>
+                <h4>GitHub</h4>
+                <p><a href="https://github.com/Abulele04" target="_blank" style="color:#4da3ff;text-decoration:none;">github.com/Abulele04</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="contact-side" id="contact">
+
+    <h2>Contact Information</h2>
+
+    <a class="side-item"
+href="https://github.com/Abulele04"
+target="_blank">
+
+    <i class="fab fa-github"></i>
+
+    <div>
+        <h4>GitHub</h4>
+        <p style="color:#4da3ff;">@Abulele04</p>
+    </div>
+
+</a>
+
+    <a class="side-item"
+href="https://www.linkedin.com/in/abulele-ntshiyantshiya/"
+target="_blank">
+
+    <i class="fab fa-linkedin"></i>
+
+    <div>
+        <h4>LinkedIn</h4>
+        <p style="color:#4da3ff;">
+            Abulele Ntshiyantshiya
+        </p>
+    </div>
+
+</a>
+   <a class="side-item"
+href="https://instagram.com/"
+target="_blank">
+
+    <i class="fab fa-instagram"></i>
+
+    <div>
+        <h4>Instagram</h4>
+        <p style="color:#4da3ff;">
+            @abu_lele0
+        </p>
+    </div>
+
+</a>
+
+    <a class="side-item"
+href="mailto:abulelentshiyantshiya@gmail.com">
+
+    <i class="fas fa-envelope"></i>
+
+    <div>
+        <h4>Email</h4>
+
+        <p style="color:#4da3ff;">
+            abulelentshiyantshiya@gmail.com
+        </p>
+    </div>
+
+</a>
+
+</div>
+
+</section>
+
+<section id="education">
+
+<h2 class="section-title">Education</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>iYunivesithi Walter Sisulu</h3>
+<p>Diploma in ICT Support Services</p>
+<p>Completed: 2025</p>
+</div>
+
+<div class="card">
+<h3>Vukayibambe Secondary School</h3>
+<p>National Senior Certificate</p>
+<p>Completed: 2021</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+<div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">IT Support & Troubleshooting</div>
+<div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Computer Networking</div>
+<div class="skill" style="background:linear-gradient(145deg,#0d5f52,#07352d);">Cybersecurity Fundamentals</div>
+<div class="skill" style="background:linear-gradient(145deg,#7a5a11,#3b2a05);">Web Development</div>
+<div class="skill" style="background:linear-gradient(145deg,#64217a,#2d1038);">Problem Solving</div>
+<div class="skill" style="background:linear-gradient(145deg,#8f2453,#3b0e22);">Communication Skills</div>
+</div>
+
+</section>
+
+<section id="certifications" class="certifications">
+
+<h2 class="section-title">Certifications</h2>
+
+<ul>
+<li>CCNA v7 Introduction to Networks</li>
+<li>Cyber Active Defense Professional (CADP)</li>
+<li>Responsive Web Design</li>
+<li>Introduction to Cybersecurity</li>
+<li>IT Customer Support Basics</li>
+<li>Introduction to Data Science</li>
+</ul>
+
+</section>
+
+<section>
+
+<h2 class="section-title">References</h2>
+
+<div class="references">
+
+<div class="reference-card">
+
+    <h3>Mr. J Okuthe</h3>
+
+    <p>Lecturer - iYunivesithi Walter Sisulu</p>
+
+    <p>
+        <i class="fas fa-envelope" style="color:#4da3ff; margin-right:10px;"></i>
+
+        <a href="mailto:jokuthe@wsu.ac.za"
+        style="color:#4da3ff; text-decoration:none;">
+
+        jokuthe@wsu.ac.za
+
+        </a>
+    </p>
+
+</div>
+
+<div class="reference-card">
+
+    <h3>Mr. Makwande</h3>
+
+    <p>Teacher - Vukayibambe Secondary School</p>
+
+    <p>
+        <i class="fas fa-envelope" style="color:#4da3ff; margin-right:10px;"></i>
+
+        <a href="mailto:mntshiyantshiya@gmail.com"
+        style="color:#4da3ff; text-decoration:none;">
+
+        mntshiyantshiya@gmail.com
+
+        </a>
+    </p>
+
+</div>
+
+</div>
+
+</section>
+<div class="floating-buttons">
+
+<div class="float-btn">
+<i class="fas fa-language"></i>
+</div>
+
+<div class="float-btn">
+<i class="fas fa-volume-up"></i>
+</div>
+
+<div class="float-btn">
+<i class="fas fa-comment"></i>
+</div>
+
+</div>
+
+<footer>
+© 2026 Abulele Ntshiyantshiya. All Rights Reserved.
+</footer>
+
+</body>
+</html>
