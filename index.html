@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,9 +76,36 @@ nav ul li a:hover{
 .hero-img{
     display:flex;
     justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.hero-img::before{
+    content:'';
+    position:absolute;
+    width:340px;
+    height:340px;
+    background:radial-gradient(circle, rgba(47,140,255,0.55) 0%, rgba(13,45,255,0.25) 45%, transparent 75%);
+    border-radius:50%;
+    z-index:0;
+    filter:blur(15px);
+    animation:pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow{
+    0%,100%{
+        transform:scale(1);
+        opacity:0.8;
+    }
+    50%{
+        transform:scale(1.08);
+        opacity:1;
+    }
 }
 
 .hero-img img{
+    position:relative;
+    z-index:1;
     width:100%;
     max-width:360px;
     border-radius:25px;
@@ -229,6 +255,80 @@ section{
     margin-bottom:15px;
 }
 
+/* Experience */
+.experience{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    max-width:900px;
+    margin:0 auto;
+}
+
+.exp-card{
+    background:linear-gradient(145deg, rgba(16,34,92,0.95), rgba(5,12,45,0.95));
+    border:1px solid rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:25px;
+    transition:0.3s;
+    backdrop-filter:blur(10px);
+}
+
+.exp-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(0,123,255,0.4);
+}
+
+.exp-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:5px;
+}
+
+.exp-header h3{
+    color:#4da3ff;
+    font-size:22px;
+}
+
+.exp-date{
+    color:#8fb4ff;
+    font-size:14px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.exp-company{
+    color:#bbb;
+    font-style:italic;
+    margin-bottom:18px;
+}
+
+.exp-card ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.exp-card ul li{
+    color:#d9d9d9;
+    line-height:1.6;
+    padding-left:22px;
+    position:relative;
+}
+
+.exp-card ul li::before{
+    content:'\f0da';
+    font-family:'Font Awesome 6 Free';
+    font-weight:900;
+    color:#4da3ff;
+    position:absolute;
+    left:0;
+    top:2px;
+}
+
 .certifications ul{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -260,6 +360,11 @@ section{
     border-radius:50%;
     top:-40px;
     right:-40px;
+}
+
+.reference-card p{
+    margin-bottom:8px;
+    color:#d9d9d9;
 }
 
 .floating-buttons{
@@ -305,6 +410,10 @@ footer{
 .hero-text h1{
     font-size:50px;
 }
+
+.exp-header{
+    flex-direction:column;
+}
 @keyframes glow{
     0%{
         box-shadow:0 0 5px rgba(0,123,255,0.2);
@@ -323,7 +432,8 @@ footer{
 .card,
 .skill,
 .reference-card,
-.certifications li{
+.certifications li,
+.exp-card{
     animation:glow 4s infinite;
 }
 nav ul li a::after{
@@ -353,6 +463,7 @@ nav ul li a:hover::after{
     <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -377,10 +488,9 @@ nav ul li a:hover::after{
     </h2>
 
     <p>
-        I am a dedicated and motivated ICT graduate with strong skills in networking,
-        IT support, cybersecurity, and web development.
-        I am seeking entry-level opportunities where I can apply my knowledge,
-        gain practical experience, and grow within the IT industry.
+        I am an ICT graduate with hands-on experience in IT support, networking, and
+        cybersecurity gained across two internships. I am seeking entry-level opportunities
+        where I can apply my knowledge, gain practical experience, and grow within the IT industry.
     </p>
 
     <div class="info-grid">
@@ -500,8 +610,54 @@ href="mailto:abulelentshiyantshiya@gmail.com">
 
 <div class="card">
 <h3>Vukayibambe Secondary School</h3>
-<p>National Senior Certificate</p>
+<p>National Senior Certificate (Bachelor's Pass)</p>
 <p>Completed: 2021</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="experience">
+
+<h2 class="section-title">Experience</h2>
+
+<div class="experience">
+
+<div class="exp-card">
+    <div class="exp-header">
+        <h3>ICT Support Intern</h3>
+        <span class="exp-date">May 2026 – Present</span>
+    </div>
+    <p class="exp-company">Department of Agriculture | MICT SETA Internship Programme</p>
+    <ul>
+        <li>Delivered first-line IT support for hardware, software, and network issues across multiple department sites, resolving tickets efficiently and minimising staff downtime.</li>
+        <li>Installed and configured desktops, laptops, printers, scanners, and wireless access points (APs) for a growing user base.</li>
+        <li>Deployed and configured new computers for incoming staff, including OS setup, software installation, and network connection.</li>
+        <li>Installed and upgraded hardware components, including RAM and hard drives, extending device lifespan and improving performance.</li>
+        <li>Configured and supported Windows 10 and Windows 11 systems for day-to-day end-user operations.</li>
+        <li>Assisted with Microsoft 365 administration, Active Directory user management, password resets, and general end-user support.</li>
+        <li>Built and tested Ethernet (LAN) cables and maintained reliable network connectivity across office infrastructure.</li>
+        <li>Performed routine system maintenance and technical troubleshooting to proactively prevent downtime.</li>
+    </ul>
+</div>
+
+<div class="exp-card">
+    <div class="exp-header">
+        <h3>IT Network & Support Technician Intern</h3>
+        <span class="exp-date">February 2024 – December 2024</span>
+    </div>
+    <p class="exp-company">Walter Sisulu University</p>
+    <ul>
+        <li>Delivered first-line IT support for hardware, software, and network issues across one department site, minimising staff downtime.</li>
+        <li>Installed and configured desktops and wireless access points (APs) for a growing user base.</li>
+        <li>Deployed and configured new computers for incoming staff, including OS setup, software installation, and network connection.</li>
+        <li>Installed and upgraded hardware components, including RAM and hard drives, extending device lifespan and improving performance.</li>
+        <li>Configured and supported Windows 10 and Windows 11 systems for day-to-day end-user operations.</li>
+        <li>Assisted with Microsoft 365 administration, Active Directory user management, password resets, and general end-user support.</li>
+        <li>Built and tested Ethernet (LAN) cables and maintained reliable network connectivity across office infrastructure.</li>
+        <li>Performed routine system maintenance and technical troubleshooting to proactively prevent downtime.</li>
+    </ul>
 </div>
 
 </div>
@@ -514,11 +670,25 @@ href="mailto:abulelentshiyantshiya@gmail.com">
 
 <div class="skills">
 <div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">IT Support & Troubleshooting</div>
-<div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Computer Networking</div>
-<div class="skill" style="background:linear-gradient(145deg,#0d5f52,#07352d);">Cybersecurity Fundamentals</div>
-<div class="skill" style="background:linear-gradient(145deg,#7a5a11,#3b2a05);">Web Development</div>
-<div class="skill" style="background:linear-gradient(145deg,#64217a,#2d1038);">Problem Solving</div>
-<div class="skill" style="background:linear-gradient(145deg,#8f2453,#3b0e22);">Communication Skills</div>
+<div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Windows 10 & Windows 11</div>
+<div class="skill" style="background:linear-gradient(145deg,#0d5f52,#07352d);">Microsoft 365 & Active Directory</div>
+<div class="skill" style="background:linear-gradient(145deg,#7a5a11,#3b2a05);">Computer Networking (LAN/WAN, TCP/IP)</div>
+<div class="skill" style="background:linear-gradient(145deg,#64217a,#2d1038);">Cisco Packet Tracer</div>
+<div class="skill" style="background:linear-gradient(145deg,#8f2453,#3b0e22);">Power BI</div>
+<div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">AnyDesk (Remote Support)</div>
+<div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Hardware Installation & Upgrades</div>
+<div class="skill" style="background:linear-gradient(145deg,#0d5f52,#07352d);">Desktop & Laptop Deployment</div>
+<div class="skill" style="background:linear-gradient(145deg,#7a5a11,#3b2a05);">Printer & Scanner Configuration</div>
+<div class="skill" style="background:linear-gradient(145deg,#64217a,#2d1038);">Ethernet Cable Installation</div>
+<div class="skill" style="background:linear-gradient(145deg,#8f2453,#3b0e22);">HTML & CSS</div>
+<div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">Cybersecurity Fundamentals</div>
+<div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Problem Solving</div>
+<div class="skill" style="background:linear-gradient(145deg,#0d5f52,#07352d);">Analytical Thinking</div>
+<div class="skill" style="background:linear-gradient(145deg,#7a5a11,#3b2a05);">Communication</div>
+<div class="skill" style="background:linear-gradient(145deg,#64217a,#2d1038);">Teamwork & Collaboration</div>
+<div class="skill" style="background:linear-gradient(145deg,#8f2453,#3b0e22);">Customer Service</div>
+<div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">Time Management</div>
+<div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Continuous Learning</div>
 </div>
 
 </section>
@@ -528,11 +698,16 @@ href="mailto:abulelentshiyantshiya@gmail.com">
 <h2 class="section-title">Certifications</h2>
 
 <ul>
-<li>CCNA v7 Introduction to Networks</li>
-<li>Cyber Active Defense Professional (CADP)</li>
-<li>Responsive Web Design</li>
+<li>CCNAv7: Introduction to Networks</li>
 <li>Introduction to Cybersecurity</li>
+<li>Cyber Active Defense Professional (CADP) – Version 3.0</li>
+<li>Responsive Web Design</li>
 <li>IT Customer Support Basics</li>
+<li>Data Link Layer Network Technology Micro-Certification</li>
+<li>Cloud Service Computing Micro-Certification</li>
+<li>Engaging Stakeholders for Success</li>
+<li>Mobile Digital Literacy – YaRona</li>
+<li>HCI-Datacom V1.0 Course</li>
 <li>Introduction to Data Science</li>
 </ul>
 
@@ -546,7 +721,28 @@ href="mailto:abulelentshiyantshiya@gmail.com">
 
 <div class="reference-card">
 
-    <h3>Mr. J Okuthe</h3>
+    <h3>Mr. Zubenathi Ndamase</h3>
+
+    <p>Network Controller - Department of Agriculture (Amathole Region)</p>
+
+    <p>
+        <i class="fas fa-phone" style="color:#4da3ff; margin-right:10px;"></i>
+        <a href="tel:+27833032700" style="color:#4da3ff; text-decoration:none;">083 303 2700</a>
+    </p>
+
+    <p>
+        <i class="fas fa-envelope" style="color:#4da3ff; margin-right:10px;"></i>
+        <a href="mailto:Zubenathi.Ndamase@ecagriculture.gov.za"
+        style="color:#4da3ff; text-decoration:none;">
+        Zubenathi.Ndamase@ecagriculture.gov.za
+        </a>
+    </p>
+
+</div>
+
+<div class="reference-card">
+
+    <h3>Mr. J. Okuthe</h3>
 
     <p>Lecturer - iYunivesithi Walter Sisulu</p>
 
@@ -565,18 +761,22 @@ href="mailto:abulelentshiyantshiya@gmail.com">
 
 <div class="reference-card">
 
-    <h3>Mr. Makwande</h3>
+    <h3>Mr. Lusanda Guma</h3>
 
-    <p>Teacher - Vukayibambe Secondary School</p>
+    <p>IT Network & Support Technician Lead - Walter Sisulu University</p>
+
+    <p>
+        <i class="fas fa-phone" style="color:#4da3ff; margin-right:10px;"></i>
+        <a href="tel:+27838961251" style="color:#4da3ff; text-decoration:none;">083 896 1251</a>
+        &nbsp;/&nbsp;
+        <a href="tel:+27437085471" style="color:#4da3ff; text-decoration:none;">043 708 5471</a>
+    </p>
 
     <p>
         <i class="fas fa-envelope" style="color:#4da3ff; margin-right:10px;"></i>
-
-        <a href="mailto:mntshiyantshiya@gmail.com"
+        <a href="mailto:Gumalusanda3@gmail.com"
         style="color:#4da3ff; text-decoration:none;">
-
-        mntshiyantshiya@gmail.com
-
+        Gumalusanda3@gmail.com
         </a>
     </p>
 
