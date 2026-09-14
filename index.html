@@ -49,6 +49,35 @@ nav ul{
     gap:30px;
 }
 
+@media(max-width:768px){
+
+nav{
+    padding:15px 4%;
+}
+
+.logo{
+    font-size:24px;
+    white-space:nowrap;
+}
+
+nav ul{
+    overflow-x:auto;
+    white-space:nowrap;
+    gap:20px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+}
+
+nav ul::-webkit-scrollbar{
+    display:none;
+}
+
+nav ul li{
+    flex:0 0 auto;
+}
+
+}
+
 nav ul li a{
     text-decoration:none;
     color:white;
