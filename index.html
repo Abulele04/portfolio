@@ -192,8 +192,9 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
 /* ---------- QR CODE ---------- */
 .qr-wrap{
     display:inline-flex;flex-direction:column;align-items:center;gap:10px;
-    margin-bottom:18px;max-width:100%;
+    max-width:100%;
 }
+.qr-contact{display:flex;margin:10px auto 0;width:100%}
 .qr-box{
     background:#fff;padding:12px;border-radius:14px;
     box-shadow:0 0 20px rgba(47,140,255,0.4);
@@ -201,6 +202,41 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
 }
 .qr-box img,.qr-box canvas{width:150px !important;height:150px !important;max-width:100%}
 .qr-text{font-size:12px;letter-spacing:0.1em;color:#8fb4ff;text-transform:uppercase}
+
+/* ---------- WELCOME SCREEN ---------- */
+body.locked{overflow:hidden}
+.welcome{
+    position:fixed;inset:0;z-index:3000;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    background:
+    radial-gradient(circle at top left,#0d2dff55,transparent 40%),
+    radial-gradient(circle at bottom right,#00aaff44,transparent 40%),
+    #020b2d;
+    transition:opacity 0.6s ease,visibility 0.6s ease;
+}
+.welcome.hide{opacity:0;visibility:hidden}
+.welcome-card{
+    text-align:center;max-width:560px;width:100%;
+    padding:clamp(30px,6vw,55px);border-radius:30px;
+    background:linear-gradient(145deg,rgba(16,34,92,0.95),rgba(5,12,45,0.95));
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 30px rgba(0,123,255,0.35),0 0 80px rgba(0,123,255,0.15);
+    animation:welcome-in 0.9s ease both;
+}
+@keyframes welcome-in{from{opacity:0;transform:translateY(25px) scale(0.97)}to{opacity:1;transform:none}}
+.welcome-card .wave{font-size:clamp(36px,8vw,52px);margin-bottom:10px}
+.welcome-card h2{color:#4da3ff;font-size:clamp(26px,5.5vw,40px);margin-bottom:12px;line-height:1.2}
+.welcome-card .w-name{color:#fff;font-weight:bold;font-size:clamp(18px,3.5vw,24px);margin-bottom:14px}
+.welcome-card p{color:#d9d9d9;line-height:1.7;margin-bottom:28px;font-size:clamp(14px,2.5vw,16px)}
+.welcome-btn{
+    background:#2f8cff;color:#fff;border:0;cursor:pointer;
+    font-size:clamp(15px,2.8vw,18px);font-weight:bold;
+    padding:15px 34px;border-radius:50px;transition:0.3s;
+    box-shadow:0 0 20px rgba(0,123,255,0.5);
+}
+.welcome-btn:hover,.welcome-btn:focus-visible{transform:translateY(-3px);box-shadow:0 0 30px rgba(0,123,255,0.8);outline:none}
+.welcome-btn i{margin-left:8px}
 
 /* ---------- LAPTOP / SMALL DESKTOP ---------- */
 @media (max-width:1280px){
@@ -245,12 +281,23 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
     .section-title{margin-bottom:32px}
     .float-btn{width:48px;height:48px;font-size:19px}
     .floating-buttons{right:12px;bottom:12px;gap:10px}
-    .qr-box img,.qr-box canvas{width:130px !important;height:130px !important}
+    .qr-wrap{display:none}
 }
 </style>
 </head>
 
-<body>
+<body class="locked">
+
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+    <div class="welcome-card">
+        <div class="wave">👋</div>
+        <h2 id="welcomeTitle">Welcome to my Portfolio</h2>
+        <div class="w-name">Abulele Ntshiyantshiya</div>
+        <p>Thank you for visiting. Take a look at my education, experience, skills and certifications, and feel free to get in touch.</p>
+        <button class="welcome-btn" id="enterBtn">Enter Portfolio <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
 
 <nav>
     <div class="logo">Abulele Ntshiyantshiya</div>
@@ -342,6 +389,11 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
         <i class="fas fa-envelope"></i>
         <div><h4>Email</h4><p style="color:#4da3ff;">abulelentshiyantshiya@gmail.com</p></div>
     </a>
+
+    <div class="qr-wrap qr-contact">
+        <div class="qr-box" id="qrcode"></div>
+        <span class="qr-text">Scan to view my portfolio</span>
+    </div>
 </div>
 
 </section>
@@ -487,10 +539,6 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
 </div>
 
 <footer>
-    <div class="qr-wrap">
-        <div class="qr-box" id="qrcode"></div>
-        <span class="qr-text">Scan to view my portfolio</span>
-    </div>
     <div>© 2026 Abulele Ntshiyantshiya. All Rights Reserved.</div>
 </footer>
 
@@ -526,6 +574,16 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     menuBtn.setAttribute('aria-expanded', false);
     menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
 }));
+
+const welcome = document.getElementById('welcome');
+const enterBtn = document.getElementById('enterBtn');
+enterBtn.focus();
+enterBtn.addEventListener('click', () => {
+    welcome.classList.add('hide');
+    document.body.classList.remove('locked');
+    window.scrollTo(0, 0);
+    setTimeout(() => welcome.remove(), 700);
+});
 </script>
 
 </body>
