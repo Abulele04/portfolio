@@ -189,6 +189,19 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
     *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
 }
 
+/* ---------- QR CODE ---------- */
+.qr-wrap{
+    display:inline-flex;flex-direction:column;align-items:center;gap:10px;
+    margin-bottom:18px;max-width:100%;
+}
+.qr-box{
+    background:#fff;padding:12px;border-radius:14px;
+    box-shadow:0 0 20px rgba(47,140,255,0.4);
+    line-height:0;
+}
+.qr-box img,.qr-box canvas{width:150px !important;height:150px !important;max-width:100%}
+.qr-text{font-size:12px;letter-spacing:0.1em;color:#8fb4ff;text-transform:uppercase}
+
 /* ---------- LAPTOP / SMALL DESKTOP ---------- */
 @media (max-width:1280px){
     .hero{grid-template-columns:1fr 1.3fr;gap:30px}
@@ -232,6 +245,7 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
     .section-title{margin-bottom:32px}
     .float-btn{width:48px;height:48px;font-size:19px}
     .floating-buttons{right:12px;bottom:12px;gap:10px}
+    .qr-box img,.qr-box canvas{width:130px !important;height:130px !important}
 }
 </style>
 </head>
@@ -472,9 +486,32 @@ footer{text-align:center;padding:25px;background:#000814;font-size:14px}
     <div class="float-btn"><i class="fas fa-comment"></i></div>
 </div>
 
-<footer>© 2026 Abulele Ntshiyantshiya. All Rights Reserved.</footer>
+<footer>
+    <div class="qr-wrap">
+        <div class="qr-box" id="qrcode"></div>
+        <span class="qr-text">Scan to view my portfolio</span>
+    </div>
+    <div>© 2026 Abulele Ntshiyantshiya. All Rights Reserved.</div>
+</footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+// The QR code points to this page's own address, so once the site is hosted
+// online, scanning it opens the portfolio. To force a specific link, set
+// PORTFOLIO_URL, e.g. "https://abulele04.github.io/"
+const PORTFOLIO_URL = "";
+const QR_URL = PORTFOLIO_URL ||
+    (location.protocol.startsWith("http")
+        ? location.origin + location.pathname
+        : "https://www.linkedin.com/in/abulele-ntshiyantshiya-176842357"); // fallback when opened as a local file
+if (window.QRCode) {
+    new QRCode(document.getElementById("qrcode"), {
+        text: QR_URL, width: 256, height: 256,
+        colorDark: "#020b2d", colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+    });
+}
+
 const menuBtn = document.getElementById('menuBtn');
 const navLinks = document.getElementById('navLinks');
 
@@ -492,4 +529,4 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 </script>
 
 </body>
-            </html>
+</html>
