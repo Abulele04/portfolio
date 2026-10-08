@@ -11,7 +11,6 @@
 html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
 img{max-width:100%;height:auto}
 a{overflow-wrap:anywhere}
-
 body{
     background:
     linear-gradient(rgba(2,11,45,0.88),rgba(2,11,45,0.92)),
@@ -20,19 +19,12 @@ body{
     url('photo3.jpeg') no-repeat 15% 90% / 380px,
     #020b2d;
     background-attachment:fixed,fixed,fixed,fixed,scroll;
-    color:white;
-    overflow-x:hidden;
+    color:white;overflow-x:hidden;
 }
-
-/* ---------- NAV ---------- */
 nav{
-    position:fixed;top:0;left:0;width:100%;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    display:flex;justify-content:space-between;align-items:center;
-    padding:18px 5%;
-    z-index:1000;
+    position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    display:flex;justify-content:space-between;align-items:center;padding:18px 5%;z-index:1000;
 }
 .logo{font-size:clamp(20px,3vw,32px);font-weight:bold;color:#2f8cff;white-space:nowrap}
 nav ul{display:flex;list-style:none;gap:30px}
@@ -40,491 +32,159 @@ nav ul li a{text-decoration:none;color:white;font-weight:600;transition:0.3s}
 nav ul li a:hover{color:#2f8cff}
 nav ul li a::after{content:'';display:block;width:0;height:2px;background:#4da3ff;transition:0.3s;margin-top:5px}
 nav ul li a:hover::after{width:100%}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:26px;cursor:pointer;padding:4px 8px}
 
-.menu-btn{
-    display:none;background:none;border:0;color:white;
-    font-size:26px;cursor:pointer;padding:4px 8px;
-}
-
-/* ---------- HERO ---------- */
 .hero{
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:0.9fr 1.2fr 0.9fr;
-    align-items:center;
-    gap:35px;
-    padding:120px 5% 80px;
-    background:
+    min-height:100vh;display:grid;grid-template-columns:0.9fr 1.2fr 0.9fr;align-items:center;
+    gap:35px;padding:120px 5% 80px;background:
     radial-gradient(circle at top left,#0d2dff33,transparent 30%),
-    radial-gradient(circle at bottom right,#00aaff22,transparent 30%),
-    #020b2d;
+    radial-gradient(circle at bottom right,#00aaff22,transparent 30%),#020b2d;
 }
 .hero-img{display:flex;justify-content:center;align-items:center;position:relative}
-.hero-img::before{
-    content:'';position:absolute;
-    width:min(340px,90%);aspect-ratio:1;
-    background:radial-gradient(circle,rgba(47,140,255,0.55) 0%,rgba(13,45,255,0.25) 45%,transparent 75%);
-    border-radius:50%;z-index:0;filter:blur(15px);
-    animation:pulse-glow 4s ease-in-out infinite;
-}
+.hero-img::before{content:'';position:absolute;width:min(340px,90%);aspect-ratio:1;background:radial-gradient(circle,rgba(47,140,255,0.55) 0%,rgba(13,45,255,0.25) 45%,transparent 75%);border-radius:50%;z-index:0;filter:blur(15px);animation:pulse-glow 4s ease-in-out infinite}
 @keyframes pulse-glow{0%,100%{transform:scale(1);opacity:0.8}50%{transform:scale(1.08);opacity:1}}
-.hero-img img{
-    position:relative;z-index:1;width:100%;max-width:360px;
-    border-radius:25px;border:2px solid #1f6fff;
-    box-shadow:0 0 15px #1f6fff,0 0 40px rgba(0,123,255,0.4);
-}
-
+.hero-img img{position:relative;z-index:1;width:100%;max-width:360px;border-radius:25px;border:2px solid #1f6fff;box-shadow:0 0 15px #1f6fff,0 0 40px rgba(0,123,255,0.4)}
 .hero-text h3{color:#4da3ff;font-size:clamp(20px,2.5vw,28px);margin-bottom:10px}
 .hero-text h1{font-size:clamp(38px,5.5vw,75px);line-height:1.05;margin-bottom:20px}
 .hero-text h2{color:#2f8cff;margin-bottom:25px;line-height:1.4;font-size:clamp(16px,1.8vw,24px)}
 .hero-text p{color:#d9d9d9;line-height:1.8;margin-bottom:30px}
-
 .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.info-card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    padding:22px;border-radius:20px;
-    display:flex;align-items:center;gap:15px;
-    backdrop-filter:blur(10px);transition:0.3s;
-    text-align:left;min-width:0;
-}
-.info-card > div{min-width:0}
-.info-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,123,255,0.4)}
+.info-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:22px;border-radius:20px;display:flex;align-items:center;gap:15px;backdrop-filter:blur(10px);transition:0.3s;text-align:left;min-width:0}
+.info-card>div{min-width:0}.info-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,123,255,0.4)}
 .info-card i{font-size:26px;color:#4da3ff;flex-shrink:0}
-
-.contact-side{
-    background:linear-gradient(145deg,#08153f,#020b2d);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:30px;padding:35px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 0 15px rgba(0,123,255,0.2),0 0 35px rgba(0,123,255,0.1);
-    min-width:0;
-}
+.contact-side{background:linear-gradient(145deg,#08153f,#020b2d);border:1px solid rgba(255,255,255,0.08);border-radius:30px;padding:35px;backdrop-filter:blur(10px);box-shadow:0 0 15px rgba(0,123,255,0.2),0 0 35px rgba(0,123,255,0.1);min-width:0}
 .contact-side h2{margin-bottom:25px}
-.side-item{
-    display:flex;align-items:center;gap:18px;
-    margin-bottom:20px;text-decoration:none;color:white;
-    padding:15px;border-radius:18px;transition:0.3s;
-}
-.side-item > div{min-width:0}
-.side-item:hover{background:rgba(255,255,255,0.05);transform:translateX(5px);box-shadow:0 0 20px rgba(0,123,255,0.3)}
-.side-item i{color:#4da3ff;font-size:24px;width:28px;text-align:center;flex-shrink:0}
-.side-item h4{margin-bottom:5px}
-.side-item p{color:#bbb;overflow-wrap:anywhere}
+.side-item{display:flex;align-items:center;gap:18px;margin-bottom:20px;text-decoration:none;color:white;padding:15px;border-radius:18px;transition:0.3s}
+.side-item>div{min-width:0}.side-item:hover{background:rgba(255,255,255,0.05);transform:translateX(5px);box-shadow:0 0 20px rgba(0,123,255,0.3)}
+.side-item i{color:#4da3ff;font-size:24px;width:28px;text-align:center;flex-shrink:0}.side-item h4{margin-bottom:5px}.side-item p{color:#bbb;overflow-wrap:anywhere}
 
-/* ---------- SECTIONS ---------- */
 section{padding:80px 5%}
 .section-title{text-align:center;font-size:clamp(30px,4vw,45px);color:#4da3ff;margin-bottom:50px}
-
-.cards,.skills,.references{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
-    gap:25px;
-}
-.card,.skill,.reference-card{
-    background:linear-gradient(145deg,rgba(16,34,92,0.95),rgba(5,12,45,0.95));
-    border:1px solid rgba(255,255,255,0.08);
-    padding:30px;border-radius:25px;transition:0.3s;
-    backdrop-filter:blur(10px);
-}
-.skill{padding:22px;text-align:center}
-.card:hover,.skill:hover,.reference-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,123,255,0.4)}
-.card h3,.reference-card h3{color:#4da3ff;margin-bottom:15px}
-.card p{margin-bottom:6px}
-
+.cards,.skills,.references{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:25px}
+.card,.skill,.reference-card{background:linear-gradient(145deg,rgba(16,34,92,0.95),rgba(5,12,45,0.95));border:1px solid rgba(255,255,255,0.08);padding:30px;border-radius:25px;transition:0.3s;backdrop-filter:blur(10px)}
+.skill{padding:22px;text-align:center}.card:hover,.skill:hover,.reference-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,123,255,0.4)}
+.card h3,.reference-card h3{color:#4da3ff;margin-bottom:15px}.card p{margin-bottom:6px}
 .experience{display:flex;flex-direction:column;gap:30px;max-width:900px;margin:0 auto}
-.exp-card{
-    background:linear-gradient(145deg,rgba(16,34,92,0.95),rgba(5,12,45,0.95));
-    border:1px solid rgba(255,255,255,0.08);
-    padding:clamp(22px,4vw,35px);border-radius:25px;transition:0.3s;
-    backdrop-filter:blur(10px);
-}
+.exp-card{background:linear-gradient(145deg,rgba(16,34,92,0.95),rgba(5,12,45,0.95));border:1px solid rgba(255,255,255,0.08);padding:clamp(22px,4vw,35px);border-radius:25px;transition:0.3s;backdrop-filter:blur(10px)}
 .exp-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,123,255,0.4)}
 .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:5px}
-.exp-header h3{color:#4da3ff;font-size:clamp(18px,2.4vw,22px)}
-.exp-date{color:#8fb4ff;font-size:14px;font-weight:600}
-.exp-company{color:#bbb;font-style:italic;margin-bottom:18px}
-.exp-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.exp-card ul li{color:#d9d9d9;line-height:1.6;padding-left:22px;position:relative}
-.exp-card ul li::before{
-    content:'\f0da';font-family:'Font Awesome 6 Free';font-weight:900;
-    color:#4da3ff;position:absolute;left:0;top:2px;
-}
+.exp-header h3{color:#4da3ff;font-size:clamp(18px,2.4vw,22px)}.exp-date{color:#8fb4ff;font-size:14px;font-weight:600}.exp-company{color:#bbb;font-style:italic;margin-bottom:18px}
+.exp-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}.exp-card ul li{color:#d9d9d9;line-height:1.6;padding-left:22px;position:relative}
+.exp-card ul li::before{content:'\f0da';font-family:'Font Awesome 6 Free';font-weight:900;color:#4da3ff;position:absolute;left:0;top:2px}
 
-.certifications ul{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
-    gap:20px;list-style:none;
-}
-.certifications li{
-    background:linear-gradient(145deg,#10245c,#050c2d);
-    border:1px solid rgba(255,255,255,0.08);
-    padding:20px;border-radius:20px;transition:0.3s;
-    position:relative;overflow:hidden;
-}
+/* CERTIFICATIONS */
+.certifications ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;list-style:none}
+.certifications li{background:linear-gradient(145deg,#10245c,#050c2d);border:1px solid rgba(255,255,255,0.08);padding:20px;border-radius:20px;transition:0.3s;position:relative;overflow:hidden}
 .certifications li:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,123,255,0.4)}
-.certifications li::before{
-    content:'';position:absolute;width:120px;height:120px;
-    background:rgba(77,163,255,0.1);border-radius:50%;top:-40px;right:-40px;
-}
+.certifications li::before{content:'';position:absolute;width:120px;height:120px;background:rgba(77,163,255,0.1);border-radius:50%;top:-40px;right:-40px}
+.cert-content{position:relative;z-index:1}
+.cert-badge{width:82px;height:82px;object-fit:cover;border-radius:10px;background:#fff;padding:2px;margin-bottom:14px;box-shadow:0 0 14px rgba(77,163,255,0.35)}
+.cert-title{font-weight:700;font-size:17px;color:#fff;line-height:1.35;margin-bottom:8px}
+.cert-issuer{color:#8fb4ff;font-size:13px;font-weight:600}
+.cert-verified{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;color:#7ed6ff}
+.cert-verified i{font-size:12px}
+.cert-simple{padding-top:26px!important}
 
 .reference-card p{margin-bottom:8px;color:#d9d9d9}
-
 .floating-buttons{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:15px;z-index:999}
-.float-btn{
-    width:60px;height:60px;border-radius:50%;background:#2f8cff;
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;box-shadow:0 0 20px rgba(0,123,255,0.4);cursor:pointer;
-}
-
+.float-btn{width:60px;height:60px;border-radius:50%;background:#2f8cff;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 20px rgba(0,123,255,0.4);cursor:pointer}
 footer{text-align:center;padding:25px;background:#000814;font-size:14px}
-
-@keyframes glow{
-    0%,100%{box-shadow:0 0 5px rgba(0,123,255,0.2)}
-    50%{box-shadow:0 0 25px rgba(0,123,255,0.5)}
-}
+@keyframes glow{0%,100%{box-shadow:0 0 5px rgba(0,123,255,0.2)}50%{box-shadow:0 0 25px rgba(0,123,255,0.5)}}
 .info-card,.card,.skill,.reference-card,.certifications li,.exp-card{animation:glow 4s infinite}
-
-@media (prefers-reduced-motion:reduce){
-    *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
-}
-
-/* ---------- QR CODE ---------- */
-.qr-wrap{
-    display:inline-flex;flex-direction:column;align-items:center;gap:10px;
-    max-width:100%;
-}
-.qr-contact{display:flex;margin:10px auto 0;width:100%}
-.qr-box{
-    background:#fff;padding:12px;border-radius:14px;
-    box-shadow:0 0 20px rgba(47,140,255,0.4);
-    line-height:0;
-}
-.qr-box img,.qr-box canvas{width:150px !important;height:150px !important;max-width:100%}
-.qr-text{font-size:12px;letter-spacing:0.1em;color:#8fb4ff;text-transform:uppercase}
-
-/* ---------- WELCOME SCREEN ---------- */
-body.locked{overflow:hidden}
-.welcome{
-    position:fixed;inset:0;z-index:3000;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    padding:20px;background:#020b2d;
-    transition:opacity 0.8s ease,visibility 0.8s ease,transform 0.8s ease;
-}
-.welcome.hide{opacity:0;visibility:hidden;transform:scale(1.12)}
-#particles{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5;animation:orb-float 12s ease-in-out infinite;z-index:0}
-.orb1{width:440px;height:440px;background:#0d2dff;top:-140px;left:-140px}
-.orb2{width:400px;height:400px;background:#00aaff;bottom:-140px;right:-120px;animation-delay:-5s}
-.orb3{width:300px;height:300px;background:#6a2cff;top:40%;left:55%;opacity:0.35;animation-delay:-8s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.qr-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:10px;max-width:100%}.qr-contact{display:flex;margin:10px auto 0;width:100%}.qr-box{background:#fff;padding:12px;border-radius:14px;box-shadow:0 0 20px rgba(47,140,255,0.4);line-height:0}.qr-box img,.qr-box canvas{width:150px!important;height:150px!important;max-width:100%}.qr-text{font-size:12px;letter-spacing:0.1em;color:#8fb4ff;text-transform:uppercase}
+body.locked{overflow:hidden}.welcome{position:fixed;inset:0;z-index:3000;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:20px;background:#020b2d;transition:opacity 0.8s ease,visibility 0.8s ease,transform 0.8s ease}.welcome.hide{opacity:0;visibility:hidden;transform:scale(1.12)}
+#particles{position:absolute;inset:0;width:100%;height:100%;z-index:1}.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5;animation:orb-float 12s ease-in-out infinite;z-index:0}.orb1{width:440px;height:440px;background:#0d2dff;top:-140px;left:-140px}.orb2{width:400px;height:400px;background:#00aaff;bottom:-140px;right:-120px;animation-delay:-5s}.orb3{width:300px;height:300px;background:#6a2cff;top:40%;left:55%;opacity:0.35;animation-delay:-8s}
 @keyframes orb-float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(45px,30px) scale(1.12)}}
-
-.welcome-card{
-    position:relative;z-index:2;text-align:center;
-    max-width:580px;width:100%;
-    padding:clamp(28px,6vw,52px);border-radius:32px;
-    background:rgba(8,21,63,0.55);
-    border:1px solid rgba(120,180,255,0.25);
-    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-    box-shadow:0 0 40px rgba(0,123,255,0.35),0 0 100px rgba(0,123,255,0.15),inset 0 0 30px rgba(77,163,255,0.08);
-}
-.welcome-card > *{animation:rise 0.9s cubic-bezier(.2,.8,.2,1) both}
-.welcome-card > *:nth-child(1){animation-delay:0.1s}
-.welcome-card > *:nth-child(2){animation-delay:0.3s}
-.welcome-card > *:nth-child(3){animation-delay:0.5s}
-.welcome-card > *:nth-child(4){animation-delay:0.7s}
-.welcome-card > *:nth-child(5){animation-delay:0.9s}
-.welcome-card > *:nth-child(6){animation-delay:1.1s}
+.welcome-card{position:relative;z-index:2;text-align:center;max-width:580px;width:100%;padding:clamp(28px,6vw,52px);border-radius:32px;background:rgba(8,21,63,0.55);border:1px solid rgba(120,180,255,0.25);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 0 40px rgba(0,123,255,0.35),0 0 100px rgba(0,123,255,0.15),inset 0 0 30px rgba(77,163,255,0.08)}
+.welcome-card>*{animation:rise 0.9s cubic-bezier(.2,.8,.2,1) both}.welcome-card>*:nth-child(1){animation-delay:0.1s}.welcome-card>*:nth-child(2){animation-delay:0.3s}.welcome-card>*:nth-child(3){animation-delay:0.5s}.welcome-card>*:nth-child(4){animation-delay:0.7s}.welcome-card>*:nth-child(5){animation-delay:0.9s}.welcome-card>*:nth-child(6){animation-delay:1.1s}
 @keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-.w-avatar{position:relative;width:clamp(110px,24vw,140px);aspect-ratio:1;margin:0 auto 22px}
-.w-avatar::before{
-    content:'';position:absolute;inset:-6px;border-radius:50%;
-    background:conic-gradient(#2f8cff,#00e1ff,#6a2cff,#2f8cff);
-    animation:spin 5s linear infinite;filter:blur(1px);
-}
-.w-avatar::after{
-    content:'';position:absolute;inset:-14px;border-radius:50%;
-    border:2px solid rgba(77,163,255,0.4);
-    animation:ring 2.4s ease-out infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes ring{from{transform:scale(0.92);opacity:1}to{transform:scale(1.3);opacity:0}}
-.w-avatar img{
-    position:relative;z-index:1;width:100%;height:100%;object-fit:cover;
-    border-radius:50%;border:4px solid #020b2d;
-}
-
-.w-greet{
-    color:#8fb4ff;letter-spacing:0.3em;text-transform:uppercase;
-    font-size:clamp(11px,2.4vw,13px);font-weight:bold;margin-bottom:10px;
-}
-.welcome-card h2{
-    font-size:clamp(28px,6.5vw,46px);line-height:1.15;margin-bottom:8px;
-    background:linear-gradient(90deg,#fff,#4da3ff,#00e1ff,#fff);
-    background-size:250% 100%;
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;color:transparent;
-    animation:rise 0.9s cubic-bezier(.2,.8,.2,1) 0.5s both,shine 5s linear infinite;
-}
-@keyframes shine{to{background-position:-250% 0}}
-.w-name{color:#fff;font-weight:bold;font-size:clamp(17px,3.6vw,24px);margin-bottom:14px}
-.w-type{
-    color:#4da3ff;font-weight:bold;min-height:1.6em;
-    font-size:clamp(15px,3vw,20px);margin-bottom:16px;
-}
-.cursor{display:inline-block;width:2px;height:1.1em;background:#4da3ff;margin-left:3px;vertical-align:text-bottom;animation:blink 0.8s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.welcome-card p{color:#d9d9d9;line-height:1.7;margin-bottom:28px;font-size:clamp(14px,2.5vw,16px)}
-
-.welcome-btn{
-    position:relative;overflow:hidden;
-    background:linear-gradient(90deg,#2f8cff,#00aaff);
-    color:#fff;border:0;cursor:pointer;
-    font-size:clamp(15px,2.8vw,18px);font-weight:bold;
-    padding:16px 38px;border-radius:50px;transition:0.3s;
-    box-shadow:0 0 22px rgba(0,123,255,0.55);
-}
-.welcome-btn::after{
-    content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,0.45),transparent);
-    transform:skewX(-20deg);animation:sweep 3s ease-in-out infinite;
-}
-@keyframes sweep{0%{left:-60%}60%,100%{left:130%}}
-.welcome-btn:hover,.welcome-btn:focus-visible{transform:translateY(-3px) scale(1.04);box-shadow:0 0 35px rgba(0,170,255,0.9);outline:none}
-.welcome-btn i{margin-left:10px;transition:transform 0.3s}
-.welcome-btn:hover i{transform:translateX(6px)}
-.welcome-card .w-hint{margin:16px 0 0;font-size:12px;color:#8fb4ff;opacity:0.8}
-
-/* ---------- LAPTOP / SMALL DESKTOP ---------- */
-@media (max-width:1280px){
-    .hero{grid-template-columns:1fr 1.3fr;gap:30px}
-    .contact-side{grid-column:1 / -1}
-    nav ul{gap:20px}
-}
-
-/* ---------- TABLET ---------- */
-@media (max-width:900px){
-    .hero{grid-template-columns:1fr;text-align:center;padding-top:110px}
-    .hero-img img{max-width:280px}
-    .info-grid{grid-template-columns:1fr}
-    .exp-header{flex-direction:column}
-    .exp-card ul li{text-align:left}
-
-    .menu-btn{display:block}
-    nav ul{
-        position:absolute;top:100%;left:0;width:100%;
-        flex-direction:column;gap:0;
-        background:rgba(2,11,45,0.97);
-        max-height:0;overflow:hidden;
-        transition:max-height 0.35s ease;
-    }
-    nav ul.open{max-height:400px;border-bottom:1px solid rgba(255,255,255,0.1)}
-    nav ul li a{display:block;padding:16px 5%}
-    nav ul li a::after{display:none}
-    nav ul li a:hover{background:rgba(255,255,255,0.05)}
-}
-
-/* ---------- PHONE ---------- */
-@media (max-width:600px){
-    /* fixed backgrounds are unreliable on phones, so use a plain one */
-    body{background:#020b2d}
-    nav{padding:12px 4%}
-    section{padding:60px 5%}
-    .hero{padding:100px 5% 60px;gap:28px}
-    .hero-img img{max-width:220px}
-    .contact-side{padding:22px;border-radius:22px}
-    .side-item{padding:12px;gap:14px}
-    .card,.reference-card{padding:22px}
-    .section-title{margin-bottom:32px}
-    .float-btn{width:48px;height:48px;font-size:19px}
-    .floating-buttons{right:12px;bottom:12px;gap:10px}
-    .qr-wrap{display:none}
-}
+.w-avatar{position:relative;width:clamp(110px,24vw,140px);aspect-ratio:1;margin:0 auto 22px}.w-avatar::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(#2f8cff,#00e1ff,#6a2cff,#2f8cff);animation:spin 5s linear infinite;filter:blur(1px)}.w-avatar::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(77,163,255,0.4);animation:ring 2.4s ease-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes ring{from{transform:scale(0.92);opacity:1}to{transform:scale(1.3);opacity:0}}
+.w-avatar img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid #020b2d}
+.w-greet{color:#8fb4ff;letter-spacing:0.3em;text-transform:uppercase;font-size:clamp(11px,2.4vw,13px);font-weight:bold;margin-bottom:10px}
+.welcome-card h2{font-size:clamp(28px,6.5vw,46px);line-height:1.15;margin-bottom:8px;background:linear-gradient(90deg,#fff,#4da3ff,#00e1ff,#fff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:rise 0.9s cubic-bezier(.2,.8,.2,1) 0.5s both,shine 5s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}.w-name{color:#fff;font-weight:bold;font-size:clamp(17px,3.6vw,24px);margin-bottom:14px}.w-type{color:#4da3ff;font-weight:bold;min-height:1.6em;font-size:clamp(15px,3vw,20px);margin-bottom:16px}.cursor{display:inline-block;width:2px;height:1.1em;background:#4da3ff;margin-left:3px;vertical-align:text-bottom;animation:blink 0.8s steps(1) infinite}@keyframes blink{50%{opacity:0}}.welcome-card p{color:#d9d9d9;line-height:1.7;margin-bottom:28px;font-size:clamp(14px,2.5vw,16px)}
+.welcome-btn{position:relative;overflow:hidden;background:linear-gradient(90deg,#2f8cff,#00aaff);color:#fff;border:0;cursor:pointer;font-size:clamp(15px,2.8vw,18px);font-weight:bold;padding:16px 38px;border-radius:50px;transition:0.3s;box-shadow:0 0 22px rgba(0,123,255,0.55)}
+.welcome-btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-20deg);animation:sweep 3s ease-in-out infinite}@keyframes sweep{0%{left:-60%}60%,100%{left:130%}}
+.welcome-btn:hover,.welcome-btn:focus-visible{transform:translateY(-3px) scale(1.04);box-shadow:0 0 35px rgba(0,170,255,0.9);outline:none}.welcome-btn i{margin-left:10px;transition:transform 0.3s}.welcome-btn:hover i{transform:translateX(6px)}.welcome-card .w-hint{margin:16px 0 0;font-size:12px;color:#8fb4ff;opacity:0.8}
+@media (max-width:1280px){.hero{grid-template-columns:1fr 1.3fr;gap:30px}.contact-side{grid-column:1 / -1}nav ul{gap:20px}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;text-align:center;padding-top:110px}.hero-img img{max-width:280px}.info-grid{grid-template-columns:1fr}.exp-header{flex-direction:column}.exp-card ul li{text-align:left}.menu-btn{display:block}nav ul{position:absolute;top:100%;left:0;width:100%;flex-direction:column;gap:0;background:rgba(2,11,45,0.97);max-height:0;overflow:hidden;transition:max-height 0.35s ease}nav ul.open{max-height:400px;border-bottom:1px solid rgba(255,255,255,0.1)}nav ul li a{display:block;padding:16px 5%}nav ul li a::after{display:none}nav ul li a:hover{background:rgba(255,255,255,0.05)}}
+@media (max-width:600px){body{background:#020b2d}nav{padding:12px 4%}section{padding:60px 5%}.hero{padding:100px 5% 60px;gap:28px}.hero-img img{max-width:220px}.contact-side{padding:22px;border-radius:22px}.side-item{padding:12px;gap:14px}.card,.reference-card{padding:22px}.section-title{margin-bottom:32px}.float-btn{width:48px;height:48px;font-size:19px}.floating-buttons{right:12px;bottom:12px;gap:10px}.qr-wrap{display:none}.cert-badge{width:72px;height:72px}}
 </style>
 </head>
 
 <body class="locked">
-
 <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
     <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
     <canvas id="particles" aria-hidden="true"></canvas>
-
     <div class="welcome-card">
         <div class="w-avatar"><img src="Abulele Picture.jpeg" alt="Abulele Ntshiyantshiya"></div>
-        <div>
-            <div class="w-greet" id="greet">Hello</div>
-            <h2 id="welcomeTitle">Welcome to my Portfolio</h2>
-            <div class="w-name">Abulele Ntshiyantshiya</div>
-        </div>
+        <div><div class="w-greet" id="greet">Hello</div><h2 id="welcomeTitle">Welcome to my Portfolio</h2><div class="w-name">Abulele Ntshiyantshiya</div></div>
         <div class="w-type"><span id="typed"></span><span class="cursor"></span></div>
         <p>Thank you for stopping by. Explore my education, hands-on experience, skills and certifications, and feel free to get in touch.</p>
-        <div>
-            <button class="welcome-btn" id="enterBtn">Enter Portfolio <i class="fas fa-arrow-right"></i></button>
-            <p class="w-hint">or press Enter</p>
-        </div>
+        <div><button class="welcome-btn" id="enterBtn">Enter Portfolio <i class="fas fa-arrow-right"></i></button><p class="w-hint">or press Enter</p></div>
     </div>
 </div>
 
 <nav>
     <div class="logo">Abulele Ntshiyantshiya</div>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-    </button>
-
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
     <ul id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home">Home</a></li><li><a href="#education">Education</a></li><li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <section class="hero" id="home">
-
-<div class="hero-img">
-    <img src="Abulele Picture.jpeg" alt="Profile Picture">
-</div>
-
+<div class="hero-img"><img src="Abulele Picture.jpeg" alt="Profile Picture"></div>
 <div class="hero-text">
-    <h3>Hello, I'm</h3>
-    <h1>Abulele<br>Ntshiyantshiya</h1>
+    <h3>Hello, I'm</h3><h1>Abulele<br>Ntshiyantshiya</h1>
     <h2>IT Support | Networking | Cybersecurity | Web Development</h2>
-    <p>
-        I am an ICT graduate with hands-on experience in IT support, networking, and
-        cybersecurity gained across two internships. I am seeking entry-level opportunities
-        where I can apply my knowledge, gain practical experience, and grow within the IT industry.
-    </p>
-
+    <p>I am an ICT graduate with hands-on experience in IT support, networking, and cybersecurity gained across two internships. I am seeking entry-level opportunities where I can apply my knowledge, gain practical experience, and grow within the IT industry.</p>
     <div class="info-grid">
-        <div class="info-card">
-            <i class="fas fa-phone"></i>
-            <div>
-                <h4>Phone</h4>
-                <p><a href="tel:+27638600603" style="color:#4da3ff;text-decoration:none;">063 860 0603</a></p>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <div>
-                <h4>Address</h4>
-                <p>East London, South Africa</p>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <i class="fas fa-envelope"></i>
-            <div>
-                <h4>Email</h4>
-                <p><a href="mailto:abulelentshiyantshiya@gmail.com" style="color:#4da3ff;text-decoration:none;">abulelentshiyantshiya@gmail.com</a></p>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <i class="fab fa-github"></i>
-            <div>
-                <h4>GitHub</h4>
-                <p><a href="https://github.com/Abulele04" target="_blank" rel="noopener" style="color:#4da3ff;text-decoration:none;">github.com/Abulele04</a></p>
-            </div>
-        </div>
+        <div class="info-card"><i class="fas fa-phone"></i><div><h4>Phone</h4><p><a href="tel:+27638600603" style="color:#4da3ff;text-decoration:none;">063 860 0603</a></p></div></div>
+        <div class="info-card"><i class="fas fa-map-marker-alt"></i><div><h4>Address</h4><p>East London, South Africa</p></div></div>
+        <div class="info-card"><i class="fas fa-envelope"></i><div><h4>Email</h4><p><a href="mailto:abulelentshiyantshiya@gmail.com" style="color:#4da3ff;text-decoration:none;">abulelentshiyantshiya@gmail.com</a></p></div></div>
+        <div class="info-card"><i class="fab fa-github"></i><div><h4>GitHub</h4><p><a href="https://github.com/Abulele04" target="_blank" rel="noopener" style="color:#4da3ff;text-decoration:none;">github.com/Abulele04</a></p></div></div>
     </div>
 </div>
-
 <div class="contact-side" id="contact">
     <h2>Contact Information</h2>
-
-    <a class="side-item" href="https://github.com/Abulele04" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-        <div><h4>GitHub</h4><p style="color:#4da3ff;">@Abulele04</p></div>
-    </a>
-
-    <a class="side-item" href="https://www.linkedin.com/in/abulele-ntshiyantshiya-176842357?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i>
-        <div><h4>LinkedIn</h4><p style="color:#4da3ff;">Abulele Ntshiyantshiya</p></div>
-    </a>
-
-    <a class="side-item" href="https://www.instagram.com/abu_lele0?igsh=MWZjYjYxMGNwaTNjbg==" target="_blank" rel="noopener">
-        <i class="fab fa-instagram"></i>
-        <div><h4>Instagram</h4><p style="color:#4da3ff;">@abu_lele0</p></div>
-    </a>
-
-    <a class="side-item" href="mailto:abulelentshiyantshiya@gmail.com">
-        <i class="fas fa-envelope"></i>
-        <div><h4>Email</h4><p style="color:#4da3ff;">abulelentshiyantshiya@gmail.com</p></div>
-    </a>
-
-    <div class="qr-wrap qr-contact">
-        <div class="qr-box" id="qrcode"></div>
-        <span class="qr-text">Scan to view my portfolio</span>
-    </div>
-</div>
-
-</section>
-
-<section id="education">
-<h2 class="section-title">Education</h2>
-<div class="cards">
-    <div class="card">
-        <h3>iYunivesithi Walter Sisulu</h3>
-        <p>Diploma in ICT Support Services</p>
-        <p>Completed: 2025</p>
-    </div>
-    <div class="card">
-        <h3>Vukayibambe Secondary School</h3>
-        <p>National Senior Certificate (Bachelor's Pass)</p>
-        <p>Completed: 2021</p>
-    </div>
+    <a class="side-item" href="https://github.com/Abulele04" target="_blank" rel="noopener"><i class="fab fa-github"></i><div><h4>GitHub</h4><p style="color:#4da3ff;">@Abulele04</p></div></a>
+    <a class="side-item" href="https://www.linkedin.com/in/abulele-ntshiyantshiya-176842357?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><div><h4>LinkedIn</h4><p style="color:#4da3ff;">Abulele Ntshiyantshiya</p></div></a>
+    <a class="side-item" href="https://www.instagram.com/abu_lele0?igsh=MWZjYjYxMGNwaTNjbg==" target="_blank" rel="noopener"><i class="fab fa-instagram"></i><div><h4>Instagram</h4><p style="color:#4da3ff;">@abu_lele0</p></div></a>
+    <a class="side-item" href="mailto:abulelentshiyantshiya@gmail.com"><i class="fas fa-envelope"></i><div><h4>Email</h4><p style="color:#4da3ff;">abulelentshiyantshiya@gmail.com</p></div></a>
+    <div class="qr-wrap qr-contact"><div class="qr-box" id="qrcode"></div><span class="qr-text">Scan to view my portfolio</span></div>
 </div>
 </section>
 
-<section id="experience">
-<h2 class="section-title">Experience</h2>
-<div class="experience">
+<section id="education"><h2 class="section-title">Education</h2><div class="cards">
+<div class="card"><h3>iYunivesithi Walter Sisulu</h3><p>Diploma in ICT Support Services</p><p>Completed: 2025</p></div>
+<div class="card"><h3>Vukayibambe Secondary School</h3><p>National Senior Certificate (Bachelor's Pass)</p><p>Completed: 2021</p></div>
+</div></section>
 
-<div class="exp-card">
-    <div class="exp-header">
-        <h3>ICT Support Intern</h3>
-        <span class="exp-date">May 2026 – Present</span>
-    </div>
-    <p class="exp-company">Department of Agriculture | MICT SETA Internship Programme</p>
-    <ul>
-        <li>Delivered first-line IT support for hardware, software, and network issues across multiple department sites, resolving tickets efficiently and minimising staff downtime.</li>
-        <li>Installed and configured desktops, laptops, printers, scanners, and wireless access points (APs) for a growing user base.</li>
-        <li>Deployed and configured new computers for incoming staff, including OS setup, software installation, and network connection.</li>
-        <li>Installed and upgraded hardware components, including RAM and hard drives, extending device lifespan and improving performance.</li>
-        <li>Configured and supported Windows 10 and Windows 11 systems for day-to-day end-user operations.</li>
-        <li>Assisted with Microsoft 365 administration, Active Directory user management, password resets, and general end-user support.</li>
-        <li>Built and tested Ethernet (LAN) cables and maintained reliable network connectivity across office infrastructure.</li>
-        <li>Performed routine system maintenance and technical troubleshooting to proactively prevent downtime.</li>
-    </ul>
-</div>
+<section id="experience"><h2 class="section-title">Experience</h2><div class="experience">
+<div class="exp-card"><div class="exp-header"><h3>ICT Support Intern</h3><span class="exp-date">May 2026 – Present</span></div><p class="exp-company">Department of Agriculture | MICT SETA Internship Programme</p><ul>
+<li>Delivered first-line IT support for hardware, software, and network issues across multiple department sites, resolving tickets efficiently and minimising staff downtime.</li>
+<li>Installed and configured desktops, laptops, printers, scanners, and wireless access points (APs) for a growing user base.</li>
+<li>Deployed and configured new computers for incoming staff, including OS setup, software installation, and network connection.</li>
+<li>Installed and upgraded hardware components, including RAM and hard drives, extending device lifespan and improving performance.</li>
+<li>Configured and supported Windows 10 and Windows 11 systems for day-to-day end-user operations.</li>
+<li>Assisted with Microsoft 365 administration, Active Directory user management, password resets, and general end-user support.</li>
+<li>Built and tested Ethernet (LAN) cables and maintained reliable network connectivity across office infrastructure.</li>
+<li>Performed routine system maintenance and technical troubleshooting to proactively prevent downtime.</li>
+</ul></div>
+<div class="exp-card"><div class="exp-header"><h3>IT Network & Support Technician Intern</h3><span class="exp-date">February 2024 – December 2024</span></div><p class="exp-company">iYunivesithi Walter Sisulu</p><ul>
+<li>Provided first-line technical support to 100+ students and staff daily, troubleshooting hardware, software, and network connectivity issues.</li>
+<li>Created and configured standardized user profiles across computers so students could log in and complete their work on any machine.</li>
+<li>Logged, categorized, and documented support tickets accurately to ensure timely incident tracking and resolution.</li>
+<li>Communicated effectively with end-users to gather diagnostic information and provide regular updates on issue status.</li>
+<li>Assessed and prioritized incidents based on severity and business impact to minimize downtime.</li>
+<li>Monitored and managed the incident queue, ensuring adherence to Service Level Agreements (SLAs) and timely resolution.</li>
+</ul></div>
+</div></section>
 
-<div class="exp-card">
-    <div class="exp-header">
-        <h3>IT Network & Support Technician Intern</h3>
-        <span class="exp-date">February 2024 – December 2024</span>
-    </div>
-    <p class="exp-company">iYunivesithi Walter Sisulu</p>
-    <ul>
-        <li>Provided first-line technical support to 100+ students and staff daily, troubleshooting hardware, software, and network connectivity issues.</li>
-        <li>Created and configured standardized user profiles across computers so students could log in and complete their work on any machine.</li>
-        <li>Logged, categorized, and documented support tickets accurately to ensure timely incident tracking and resolution.</li>
-        <li>Communicated effectively with end-users to gather diagnostic information and provide regular updates on issue status.</li>
-        <li>Assessed and prioritized incidents based on severity and business impact to minimize downtime.</li>
-        <li>Monitored and managed the incident queue, ensuring adherence to Service Level Agreements (SLAs) and timely resolution.</li>
-    </ul>
-</div>
-
-</div>
-</section>
-
-<section id="skills">
-<h2 class="section-title">Skills</h2>
-<div class="skills">
+<section id="skills"><h2 class="section-title">Skills</h2><div class="skills">
 <div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">IT Support & Troubleshooting</div>
 <div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Windows 10 & Windows 11</div>
 <div class="skill" style="background:linear-gradient(145deg,#0d5f52,#07352d);">Microsoft 365 & Active Directory</div>
@@ -545,173 +205,55 @@ body.locked{overflow:hidden}
 <div class="skill" style="background:linear-gradient(145deg,#8f2453,#3b0e22);">Customer Service</div>
 <div class="skill" style="background:linear-gradient(145deg,#163b8f,#0d1d52);">Time Management</div>
 <div class="skill" style="background:linear-gradient(145deg,#0c4d73,#09243d);">Continuous Learning</div>
-</div>
-</section>
+</div></section>
 
 <section id="certifications" class="certifications">
 <h2 class="section-title">Certifications</h2>
 <ul>
-<li>CCNAv7: Introduction to Networks</li>
-<li>Introduction to Cybersecurity</li>
-<li>Cyber Active Defense Professional (CADP) – Version 3.0</li>
-<li>Responsive Web Design</li>
-<li>IT Customer Support Basics</li>
-<li>Data Link Layer Network Technology Micro-Certification</li>
-<li>Cloud Service Computing Micro-Certification</li>
-<li>Engaging Stakeholders for Success</li>
-<li>Mobile Digital Literacy – YaRona</li>
-<li>HCI-Datacom V1.0 Course</li>
-<li>Introduction to Data Science</li>
+<li><div class="cert-content"><img class="cert-badge" src="cisco_ccna.png" alt="Cisco Networking Academy verified badge"><div class="cert-title">CCNAv7: Introduction to Networks</div><div class="cert-issuer">Cisco Networking Academy</div><div class="cert-verified"><i class="fas fa-circle-check"></i> Verified certificate</div></div></li>
+<li><div class="cert-content"><img class="cert-badge" src="cisco_cybersecurity.png" alt="Cisco Networking Academy verified badge"><div class="cert-title">Introduction to Cybersecurity</div><div class="cert-issuer">Cisco Networking Academy</div><div class="cert-verified"><i class="fas fa-circle-check"></i> Verified certificate</div></div></li>
+<li class="cert-simple"><div class="cert-content"><div class="cert-title">Cyber Active Defense Professional (CADP) – Version 3.0</div></div></li>
+<li class="cert-simple"><div class="cert-content"><div class="cert-title">Responsive Web Design</div></div></li>
+<li><div class="cert-content"><img class="cert-badge" src="cisco_it_support.png" alt="Cisco Networking Academy verified badge"><div class="cert-title">IT Customer Support Basics</div><div class="cert-issuer">Cisco Networking Academy</div><div class="cert-verified"><i class="fas fa-circle-check"></i> Verified certificate</div></div></li>
+<li class="cert-simple"><div class="cert-content"><div class="cert-title">Data Link Layer Network Technology Micro-Certification</div></div></li>
+<li class="cert-simple"><div class="cert-content"><div class="cert-title">Cloud Service Computing Micro-Certification</div></div></li>
+<li><div class="cert-content"><img class="cert-badge" src="cisco_stakeholders.png" alt="Cisco Networking Academy verified badge"><div class="cert-title">Engaging Stakeholders for Success</div><div class="cert-issuer">Cisco Networking Academy</div><div class="cert-verified"><i class="fas fa-circle-check"></i> Verified certificate</div></div></li>
+<li class="cert-simple"><div class="cert-content"><div class="cert-title">Mobile Digital Literacy – YaRona</div></div></li>
+<li class="cert-simple"><div class="cert-content"><div class="cert-title">HCI-Datacom V1.0 Course</div></div></li>
+<li><div class="cert-content"><img class="cert-badge" src="cisco_datascience.png" alt="Cisco Networking Academy verified badge"><div class="cert-title">Introduction to Data Science</div><div class="cert-issuer">Cisco Networking Academy</div><div class="cert-verified"><i class="fas fa-circle-check"></i> Verified certificate</div></div></li>
 </ul>
 </section>
 
-<section id="references">
-<h2 class="section-title">References</h2>
-<div class="references">
+<section id="references"><h2 class="section-title">References</h2><div class="references">
+<div class="reference-card"><h3>Mr. Zubenathi Ndamase</h3><p>Network Controller - Department of Agriculture (Amathole Region)</p><p><i class="fas fa-phone" style="color:#4da3ff;margin-right:10px;"></i><a href="tel:+27833032700" style="color:#4da3ff;text-decoration:none;">083 303 2700</a></p><p><i class="fas fa-envelope" style="color:#4da3ff;margin-right:10px;"></i><a href="mailto:Zubenathi.Ndamase@ecagriculture.gov.za" style="color:#4da3ff;text-decoration:none;">Zubenathi.Ndamase@ecagriculture.gov.za</a></p></div>
+<div class="reference-card"><h3>Mr. J. Okuthe</h3><p>Lecturer - iYunivesithi Walter Sisulu</p><p><i class="fas fa-envelope" style="color:#4da3ff;margin-right:10px;"></i><a href="mailto:jokuthe@wsu.ac.za" style="color:#4da3ff;text-decoration:none;">jokuthe@wsu.ac.za</a></p></div>
+<div class="reference-card"><h3>Mr. Lusanda Guma</h3><p>IT Network & Support Technician Lead - iYunivesithi Walter Sisulu</p><p><i class="fas fa-phone" style="color:#4da3ff;margin-right:10px;"></i><a href="tel:+27838961251" style="color:#4da3ff;text-decoration:none;">083 896 1251</a> &nbsp;/&nbsp; <a href="tel:+27437085471" style="color:#4da3ff;text-decoration:none;">043 708 5471</a></p><p><i class="fas fa-envelope" style="color:#4da3ff;margin-right:10px;"></i><a href="mailto:Gumalusanda3@gmail.com" style="color:#4da3ff;text-decoration:none;">Gumalusanda3@gmail.com</a></p></div>
+</div></section>
 
-<div class="reference-card">
-    <h3>Mr. Zubenathi Ndamase</h3>
-    <p>Network Controller - Department of Agriculture (Amathole Region)</p>
-    <p><i class="fas fa-phone" style="color:#4da3ff;margin-right:10px;"></i><a href="tel:+27833032700" style="color:#4da3ff;text-decoration:none;">083 303 2700</a></p>
-    <p><i class="fas fa-envelope" style="color:#4da3ff;margin-right:10px;"></i><a href="mailto:Zubenathi.Ndamase@ecagriculture.gov.za" style="color:#4da3ff;text-decoration:none;">Zubenathi.Ndamase@ecagriculture.gov.za</a></p>
-</div>
-
-<div class="reference-card">
-    <h3>Mr. J. Okuthe</h3>
-    <p>Lecturer - iYunivesithi Walter Sisulu</p>
-    <p><i class="fas fa-envelope" style="color:#4da3ff;margin-right:10px;"></i><a href="mailto:jokuthe@wsu.ac.za" style="color:#4da3ff;text-decoration:none;">jokuthe@wsu.ac.za</a></p>
-</div>
-
-<div class="reference-card">
-    <h3>Mr. Lusanda Guma</h3>
-    <p>IT Network & Support Technician Lead - iYunivesithi Walter Sisulu</p>
-    <p>
-        <i class="fas fa-phone" style="color:#4da3ff;margin-right:10px;"></i>
-        <a href="tel:+27838961251" style="color:#4da3ff;text-decoration:none;">083 896 1251</a>
-        &nbsp;/&nbsp;
-        <a href="tel:+27437085471" style="color:#4da3ff;text-decoration:none;">043 708 5471</a>
-    </p>
-    <p><i class="fas fa-envelope" style="color:#4da3ff;margin-right:10px;"></i><a href="mailto:Gumalusanda3@gmail.com" style="color:#4da3ff;text-decoration:none;">Gumalusanda3@gmail.com</a></p>
-</div>
-
-</div>
-</section>
-
-<div class="floating-buttons">
-    <div class="float-btn"><i class="fas fa-language"></i></div>
-    <div class="float-btn"><i class="fas fa-volume-up"></i></div>
-    <div class="float-btn"><i class="fas fa-comment"></i></div>
-</div>
-
-<footer>
-    <div>© 2026 Abulele Ntshiyantshiya. All Rights Reserved.</div>
-</footer>
+<div class="floating-buttons"><div class="float-btn"><i class="fas fa-language"></i></div><div class="float-btn"><i class="fas fa-volume-up"></i></div><div class="float-btn"><i class="fas fa-comment"></i></div></div>
+<footer><div>© 2026 Abulele Ntshiyantshiya. All Rights Reserved.</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-// The QR code points to this page's own address, so once the site is hosted
-// online, scanning it opens the portfolio. To force a specific link, set
-// PORTFOLIO_URL, e.g. "https://abulele04.github.io/"
 const PORTFOLIO_URL = "";
-const QR_URL = PORTFOLIO_URL ||
-    (location.protocol.startsWith("http")
-        ? location.origin + location.pathname
-        : "https://www.linkedin.com/in/abulele-ntshiyantshiya-176842357"); // fallback when opened as a local file
-if (window.QRCode) {
-    new QRCode(document.getElementById("qrcode"), {
-        text: QR_URL, width: 256, height: 256,
-        colorDark: "#020b2d", colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.M
-    });
-}
-
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-
-menuBtn.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open);
-    menuBtn.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
-});
-
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', false);
-    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-}));
-
-const welcome = document.getElementById('welcome');
-const enterBtn = document.getElementById('enterBtn');
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// time-based greeting
-const h = new Date().getHours();
-document.getElementById('greet').textContent =
-    (h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening') + ' 👋';
-
-// typewriter
-const roles = ['IT Support','Networking','Cybersecurity','Web Development'];
-const typed = document.getElementById('typed');
-let r = 0, c = 0, del = false, typeTimer;
-function tick(){
-    const w = roles[r];
-    typed.textContent = w.slice(0, c);
-    let t = 90;
-    if (!del && c < w.length) c++;
-    else if (!del) { del = true; t = 1300; }
-    else if (c > 0) { c--; t = 45; }
-    else { del = false; r = (r + 1) % roles.length; t = 300; }
-    typeTimer = setTimeout(tick, t);
-}
-if (reduce) typed.textContent = roles.join(' | '); else tick();
-
-// particle network
-const cv = document.getElementById('particles');
-const ctx = cv.getContext('2d');
-let W, H, pts = [], raf;
-function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
-resize(); addEventListener('resize', resize);
-const N = innerWidth < 600 ? 35 : 75;
-for (let i = 0; i < N; i++) pts.push({
-    x: Math.random()*W, y: Math.random()*H,
-    vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5,
-    r: Math.random()*1.8+0.6
-});
-function draw(){
-    ctx.clearRect(0, 0, W, H);
-    for (const p of pts){
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283);
-        ctx.fillStyle = 'rgba(120,190,255,0.85)'; ctx.fill();
-    }
-    for (let i = 0; i < pts.length; i++) for (let j = i+1; j < pts.length; j++){
-        const dx = pts[i].x-pts[j].x, dy = pts[i].y-pts[j].y, d = Math.hypot(dx, dy);
-        if (d < 120){
-            ctx.strokeStyle = 'rgba(77,163,255,' + (0.35*(1-d/120)) + ')';
-            ctx.lineWidth = 1; ctx.beginPath();
-            ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
-        }
-    }
-    raf = requestAnimationFrame(draw);
-}
-if (!reduce) draw();
-
-// enter
-function enter(){
-    welcome.classList.add('hide');
-    document.body.classList.remove('locked');
-    window.scrollTo(0, 0);
-    clearTimeout(typeTimer);
-    setTimeout(() => { cancelAnimationFrame(raf); welcome.remove(); }, 900);
-    removeEventListener('keydown', onKey);
-}
-function onKey(e){ if (e.key === 'Enter') enter(); }
-enterBtn.addEventListener('click', enter);
-addEventListener('keydown', onKey);
-enterBtn.focus();
+const QR_URL = PORTFOLIO_URL || (location.protocol.startsWith("http") ? location.origin + location.pathname : "https://www.linkedin.com/in/abulele-ntshiyantshiya-176842357");
+if(window.QRCode){new QRCode(document.getElementById("qrcode"),{text:QR_URL,width:256,height:256,colorDark:"#020b2d",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});}
+const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.innerHTML=open?'<i class="fas fa-xmark"></i>':'<i class="fas fa-bars"></i>';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded',false);menuBtn.innerHTML='<i class="fas fa-bars"></i>';}));
+const welcome=document.getElementById('welcome'),enterBtn=document.getElementById('enterBtn'),reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const h=new Date().getHours();document.getElementById('greet').textContent=(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+' 👋';
+const roles=['IT Support','Networking','Cybersecurity','Web Development'],typed=document.getElementById('typed');let r=0,c=0,del=false,typeTimer;
+function tick(){const w=roles[r];typed.textContent=w.slice(0,c);let t=90;if(!del&&c<w.length)c++;else if(!del){del=true;t=1300}else if(c>0){c--;t=45}else{del=false;r=(r+1)%roles.length;t=300}typeTimer=setTimeout(tick,t)}
+if(reduce)typed.textContent=roles.join(' | ');else tick();
+const cv=document.getElementById('particles'),ctx=cv.getContext('2d');let W,H,pts=[],raf;
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}resize();addEventListener('resize',resize);const N=innerWidth<600?35:75;
+for(let i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5,r:Math.random()*1.8+0.6});
+function draw(){ctx.clearRect(0,0,W,H);for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba(120,190,255,0.85)';ctx.fill()}for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);if(d<120){ctx.strokeStyle='rgba(77,163,255,'+(0.35*(1-d/120))+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke()}}raf=requestAnimationFrame(draw)}
+if(!reduce)draw();
+function enter(){welcome.classList.add('hide');document.body.classList.remove('locked');window.scrollTo(0,0);clearTimeout(typeTimer);setTimeout(()=>{cancelAnimationFrame(raf);welcome.remove()},900);removeEventListener('keydown',onKey)}
+function onKey(e){if(e.key==='Enter')enter()}
+enterBtn.addEventListener('click',enter);addEventListener('keydown',onKey);enterBtn.focus();
 </script>
-
 </body>
 </html>
