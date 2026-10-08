@@ -255,5 +255,344 @@ function enter(){welcome.classList.add('hide');document.body.classList.remove('l
 function onKey(e){if(e.key==='Enter')enter()}
 enterBtn.addEventListener('click',enter);addEventListener('keydown',onKey);enterBtn.focus();
 </script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- isiXhosa dictionary (English text -> isiXhosa) ---------- */
+  const XH = {
+    "Home": "Ekhaya", "Education": "Imfundo", "Experience": "Amava", "Skills": "Izakhono",
+    "Certifications": "Izatifikethi", "Contact": "Qhagamshelana", "References": "Abantu Abanokubhekiselwa",
+    "Hello, I'm": "Molo, Ndingu",
+    "IT Support | Networking | Cybersecurity | Web Development": "Inkxaso ye-IT | Unxibelelwano lweNethiwekhi | Ukhuseleko lwe-Cyber | Uphuhliso lweWebhusayithi",
+    "I am an ICT graduate with hands-on experience in IT support, networking, and cybersecurity gained across two internships. I am seeking entry-level opportunities where I can apply my knowledge, gain practical experience, and grow within the IT industry.":
+      "Ndiphumelele kwi-ICT kwaye ndinamava okusebenza kwinkxaso ye-IT, unxibelelwano lwenethiwekhi nokhuseleko lwe-cyber endiwafumene kwiinkqubo zokuqeqeshwa ezibini. Ndifuna amathuba okungena emsebenzini apho ndinokusebenzisa ulwazi lwam, ndifumane amava, kwaye ndikhule kushishino lwe-IT.",
+    "Phone": "Ifowuni", "Address": "Idilesi", "Email": "I-imeyile",
+    "East London, South Africa": "East London, eMzantsi Afrika",
+    "Contact Information": "Ulwazi loNxibelelwano",
+    "Scan to view my portfolio": "Skena ukubona iportfolio yam",
+    "Diploma in ICT Support Services": "Idiploma kwiNkonzo zeNkxaso ye-ICT",
+    "Completed: 2025": "Kugqityiwe: 2025", "Completed: 2021": "Kugqityiwe: 2021",
+    "National Senior Certificate (Bachelor's Pass)": "Isatifikethi seSizwe seBanga eliPhezulu (iBachelor's Pass)",
+    "ICT Support Intern": "Umqeqeshwa weNkxaso ye-ICT",
+    "May 2026 – Present": "Meyi 2026 – Ngoku",
+    "Department of Agriculture | MICT SETA Internship Programme": "uMnyango wezoLimo | Inkqubo yokuQeqeshwa ye-MICT SETA",
+    "Delivered first-line IT support for hardware, software, and network issues across multiple department sites, resolving tickets efficiently and minimising staff downtime.":
+      "Ndanikezela inkxaso ye-IT yokuqala kwiingxaki zehardware, isoftware nenethiwekhi kwiindawo ezininzi zomnyango, ndisombulula iitikiti ngokukhawuleza ndinciphisa ixesha lokungasebenzi kwabasebenzi.",
+    "Installed and configured desktops, laptops, printers, scanners, and wireless access points (APs) for a growing user base.":
+      "Ndafaka ndaza ndalungiselela iidesktop, iilaptop, iiprinta, iiskena kunye neewireless access points (APs) kubasebenzisi abanyukayo.",
+    "Deployed and configured new computers for incoming staff, including OS setup, software installation, and network connection.":
+      "Ndalungiselela iikhompyuter ezintsha zabasebenzi abatsha, kuquka ukufaka i-OS, isoftware nokuzidibanisa kwinethiwekhi.",
+    "Installed and upgraded hardware components, including RAM and hard drives, extending device lifespan and improving performance.":
+      "Ndafaka ndaza ndaphucula amalungu ehardware, kuquka i-RAM neehard drive, ndandisa ubomi bezixhobo ndiphucula nokusebenza kwazo.",
+    "Configured and supported Windows 10 and Windows 11 systems for day-to-day end-user operations.":
+      "Ndalungiselela ndaza ndaxhasa iinkqubo zeWindows 10 neWindows 11 zokusetyenziswa yonke imihla.",
+    "Assisted with Microsoft 365 administration, Active Directory user management, password resets, and general end-user support.":
+      "Ndanceda ngolawulo lweMicrosoft 365, ulawulo lwabasebenzisi be-Active Directory, ukuseta kwakhona amagama ayimfihlo, nenkxaso ngokubanzi kubasebenzisi.",
+    "Built and tested Ethernet (LAN) cables and maintained reliable network connectivity across office infrastructure.":
+      "Ndakha ndaza ndavavanya iikhebula zeEthernet (LAN) ndagcina unxibelelwano lwenethiwekhi lunokuthenjwa kwiofisi.",
+    "Performed routine system maintenance and technical troubleshooting to proactively prevent downtime.":
+      "Ndenza ukugcinwa kwenkqubo rhoqo nokusombulula iingxaki zobugcisa ukunqanda ixesha lokungasebenzi.",
+    "IT Network & Support Technician Intern": "Umqeqeshwa weTekhnishiyani yeNethiwekhi neNkxaso ye-IT",
+    "February 2024 – December 2024": "Februwari 2024 – Disemba 2024",
+    "Provided first-line technical support to 100+ students and staff daily, troubleshooting hardware, software, and network connectivity issues.":
+      "Ndanikezela inkxaso yobugcisa yokuqala kubafundi nabasebenzi abangaphezu kwe-100 yonke imihla, ndisombulula iingxaki zehardware, isoftware nonxibelelwano lwenethiwekhi.",
+    "Created and configured standardized user profiles across computers so students could log in and complete their work on any machine.":
+      "Ndadala ndaza ndalungiselela iiprofayile zabasebenzisi ezifanayo kwiikhompyuter ukuze abafundi bakwazi ukungena baze bagqibezele umsebenzi wabo nakweyiphi na ikhompyuter.",
+    "Logged, categorized, and documented support tickets accurately to ensure timely incident tracking and resolution.":
+      "Ndabhala, ndahlela ndaza ndarekhoda iitikiti zenkxaso ngokuchanekileyo ukuqinisekisa ukulandelwa nokusonjululwa kweengxaki ngexesha.",
+    "Communicated effectively with end-users to gather diagnostic information and provide regular updates on issue status.":
+      "Ndancokola ngokufanelekileyo nabasebenzisi ukuqokelela inkcazelo yengxaki ndibanike iindaba rhoqo ngemeko yengxaki.",
+    "Assessed and prioritized incidents based on severity and business impact to minimize downtime.":
+      "Ndavavanya ndaza ndandulula kuqala iingxaki ngokobuzaza nempembelelo kwishishini ukunciphisa ixesha lokungasebenzi.",
+    "Monitored and managed the incident queue, ensuring adherence to Service Level Agreements (SLAs) and timely resolution.":
+      "Ndajonga ndaza ndalawula uluhlu lweengxaki, ndiqinisekisa ukuthotyelwa kwee-SLA nokusonjululwa ngexesha.",
+    "IT Support & Troubleshooting": "Inkxaso ye-IT nokuSombulula Iingxaki",
+    "Computer Networking (LAN/WAN, TCP/IP)": "Unxibelelwano lweKhompyuter (LAN/WAN, TCP/IP)",
+    "AnyDesk (Remote Support)": "AnyDesk (Inkxaso Esekude)",
+    "Hardware Installation & Upgrades": "Ukufakwa nokuPhuculwa kweHardware",
+    "Desktop & Laptop Deployment": "Ukulungiselelwa kweDesktop neLaptop",
+    "Printer & Scanner Configuration": "Ukulungiswa kweePrinta neeSkena",
+    "Ethernet Cable Installation": "Ukufakwa kweeKhebula zeEthernet",
+    "Cybersecurity Fundamentals": "Iziseko zokuKhuseleka kwe-Cyber",
+    "Problem Solving": "Ukusombulula Iingxaki", "Analytical Thinking": "Ukucinga Ngokuhlalutya",
+    "Communication": "Unxibelelwano", "Teamwork & Collaboration": "Ukusebenza Njengeqela noKubambisana",
+    "Customer Service": "Inkonzo Kubathengi", "Time Management": "Ulawulo Lwexesha",
+    "Continuous Learning": "Ukufunda Rhoqo",
+    "Verified certificate": "Isatifikethi esiqinisekisiwe",
+    "Responsive Web Design": "Uyilo lweWebhusayithi Elungelelanayo",
+    "Mr. Zubenathi Ndamase": "uMnu. Zubenathi Ndamase", "Mr. J. Okuthe": "uMnu. J. Okuthe", "Mr. Lusanda Guma": "uMnu. Lusanda Guma",
+    "Network Controller - Department of Agriculture (Amathole Region)": "uMlawuli weNethiwekhi - uMnyango wezoLimo (Ingingqi yase-Amathole)",
+    "Lecturer - iYunivesithi Walter Sisulu": "uMhlohli - iYunivesithi Walter Sisulu",
+    "IT Network & Support Technician Lead - iYunivesithi Walter Sisulu": "Inkokeli yeeTekhnishiyani zeNethiwekhi neNkxaso ye-IT - iYunivesithi Walter Sisulu",
+    "© 2026 Abulele Ntshiyantshiya. All Rights Reserved.": "© 2026 Abulele Ntshiyantshiya. Onke Amalungelo Agciniwe.",
+    "Welcome to my Portfolio": "Wamkelekile kwiPortfolio yam",
+    "Thank you for stopping by. Explore my education, hands-on experience, skills and certifications, and feel free to get in touch.":
+      "Enkosi ngokundindwendwela. Phonononga imfundo yam, amava okusebenza, izakhono nezatifikethi, kwaye ungandithinta nanini.",
+    "Enter Portfolio": "Ngena kwiPortfolio", "or press Enter": "okanye cinezela u-Enter"
+  };
+  const XH_ROLES = ["Inkxaso ye-IT", "Unxibelelwano lweNethiwekhi", "Ukhuseleko lwe-Cyber", "Uphuhliso lweWebhusayithi"];
+
+  /* ---------- Chat assistant knowledge ---------- */
+  const KB = [
+    { k: ["hi", "hello", "hey", "molo", "molweni", "sawubona", "help"],
+      en: "Hello! I can tell you about Abulele's education, experience, skills, certifications, or how to get in touch.",
+      xh: "Molo! Ndingakuxelela ngemfundo, amava, izakhono, izatifikethi ka-Abulele, okanye indlela yokunxibelelana naye." },
+    { k: ["hire", "available", "opportunit", "looking for", "vacanc", "intern", "ngxaki"].slice(0, 5),
+      en: "Abulele is looking for entry-level IT opportunities in IT support, networking and cybersecurity. Email abulelentshiyantshiya@gmail.com or call 063 860 0603 to talk.",
+      xh: "U-Abulele ufuna amathuba okungena emsebenzini we-IT kwinkxaso ye-IT, unxibelelwano lwenethiwekhi nokhuseleko lwe-cyber. Bhalela abulelentshiyantshiya@gmail.com okanye fowuna kwi-063 860 0603." },
+    { k: ["educat", "study", "studied", "diploma", "school", "universit", "wsu", "matric", "imfundo", "funda"],
+      en: "Abulele holds a Diploma in ICT Support Services from Walter Sisulu University (completed 2025) and passed matric with a Bachelor's Pass at Vukayibambe Secondary School (2021).",
+      xh: "U-Abulele une-Diploma kwiNkonzo zeNkxaso ye-ICT evela kwiYunivesithi Walter Sisulu (2025), waza wagqiba ibanga le-12 nge-Bachelor's Pass e-Vukayibambe Secondary School (2021)." },
+    { k: ["experience", "work", "job", "department", "agricultur", "amava", "msebenzi"],
+      en: "Since May 2026, Abulele has been an ICT Support Intern at the Department of Agriculture (MICT SETA): first-line support, deploying PCs, Microsoft 365 and Active Directory help, and network cabling. In 2024, Abulele was an IT Network & Support Technician Intern at Walter Sisulu University, supporting 100+ students and staff daily.",
+      xh: "Ukususela ngoMeyi 2026, u-Abulele ungumqeqeshwa weNkxaso ye-ICT kuMnyango wezoLimo (MICT SETA): inkxaso yokuqala, ukulungiselela iikhompyuter, ukuncedisa nge-Microsoft 365 ne-Active Directory, nokwenza iikhebula zenethiwekhi. Ngo-2024 wayengumqeqeshwa weTekhnishiyani yeNethiwekhi neNkxaso ye-IT kwiYunivesithi Walter Sisulu, exhasa abafundi nabasebenzi abangaphezu kwe-100 yonke imihla." },
+    { k: ["skill", "tool", "technolog", "good at", "izakhono"],
+      en: "Core skills: IT support and troubleshooting, Windows 10/11, Microsoft 365 and Active Directory, LAN/WAN and TCP/IP networking, Cisco Packet Tracer, Power BI, AnyDesk remote support, hardware upgrades, cybersecurity fundamentals, and HTML & CSS.",
+      xh: "Izakhono eziphambili: inkxaso ye-IT nokusombulula iingxaki, Windows 10/11, Microsoft 365 ne-Active Directory, unxibelelwano lwe-LAN/WAN ne-TCP/IP, Cisco Packet Tracer, Power BI, inkxaso esekude nge-AnyDesk, ukuphucula ihardware, iziseko zokukhuseleka kwe-cyber, ne-HTML & CSS." },
+    { k: ["cert", "badge", "cisco", "ccna", "course", "izatifikethi"],
+      en: "Certifications include Cisco's CCNAv7: Introduction to Networks, Introduction to Cybersecurity, IT Customer Support Basics, Engaging Stakeholders for Success and Introduction to Data Science, plus CADP v3.0, Responsive Web Design and HCI-Datacom. The full list is in the Certifications section.",
+      xh: "Izatifikethi ziquka iCisco CCNAv7: Introduction to Networks, Introduction to Cybersecurity, IT Customer Support Basics, Engaging Stakeholders for Success ne-Introduction to Data Science, kunye ne-CADP v3.0, Responsive Web Design ne-HCI-Datacom. Uluhlu olupheleleyo lusecandelweni lezatifikethi." },
+    { k: ["github", "linkedin", "instagram", "social"],
+      en: "You can find Abulele on GitHub (@Abulele04), LinkedIn (Abulele Ntshiyantshiya) and Instagram (@abu_lele0). The links are in the Contact Information card.",
+      xh: "Ungamfumana u-Abulele kuGitHub (@Abulele04), kuLinkedIn (Abulele Ntshiyantshiya) nakuInstagram (@abu_lele0). Amakhonkco akwikhadi loLwazi loNxibelelwano." },
+    { k: ["referenc", "referee", "bhekisela"],
+      en: "References: Mr. Zubenathi Ndamase (Network Controller, Department of Agriculture), Mr. J. Okuthe (Lecturer, WSU) and Mr. Lusanda Guma (IT Network & Support Technician Lead, WSU). Their contact details are in the References section.",
+      xh: "Abantu abanokubhekiselwa: uMnu. Zubenathi Ndamase (uMlawuli weNethiwekhi, uMnyango wezoLimo), uMnu. J. Okuthe (uMhlohli, WSU) noMnu. Lusanda Guma (Inkokeli yeeTekhnishiyani, WSU). Iinkcukacha zabo zisecandelweni labaBhekiselwa." },
+    { k: ["where", "locat", "live", "based", "city", "ndawo", "uhlala"],
+      en: "Abulele is based in East London, South Africa.",
+      xh: "U-Abulele uhlala e-East London, eMzantsi Afrika." },
+    { k: ["contact", "email", "phone", "call", "number", "reach", "imeyile", "ifowuni", "nxibelela", "qhagamshelana"],
+      en: "You can reach Abulele on 063 860 0603 or abulelentshiyantshiya@gmail.com.",
+      xh: "Ungaqhagamshelana no-Abulele kwi-063 860 0603 okanye abulelentshiyantshiya@gmail.com." }
+  ];
+  const FALLBACK = {
+    en: "I can answer questions about Abulele's education, experience, skills, certifications, references, or contact details. Try one of the buttons below.",
+    xh: "Ndingaphendula imibuzo ngemfundo, amava, izakhono, izatifikethi, abanokubhekiselwa okanye indlela yokunxibelelana no-Abulele. Zama enye yeqhosha ezingezantsi."
+  };
+  const UI = {
+    en: { title: "Portfolio Assistant", ph: "Ask about Abulele…", send: "Send", chips: [["Education", "education"], ["Experience", "experience"], ["Skills", "skills"], ["Contact", "contact"]], close: "Close chat", lang: "Switch to isiXhosa", speak: "Read portfolio aloud", stop: "Stop reading", chat: "Ask the assistant" },
+    xh: { title: "Umncedisi wePortfolio", ph: "Buza ngo-Abulele…", send: "Thumela", chips: [["Imfundo", "education"], ["Amava", "experience"], ["Izakhono", "skills"], ["Qhagamshelana", "contact"]], close: "Vala incoko", lang: "Tshintshela kwisiNgesi", speak: "Funda iportfolio ngokuvakalayo", stop: "Yeka ukufunda", chat: "Buza kumncedisi" }
+  };
+
+  /* ---------- State ---------- */
+  let lang = "en";
+  try { lang = localStorage.getItem("pf-lang") === "xh" ? "xh" : "en"; } catch (e) {}
+  const originals = new Map();
+
+  /* ---------- Styles ---------- */
+  const css = document.createElement("style");
+  css.textContent = `
+  .float-btn{position:relative;border:0;color:#fff;user-select:none;transition:transform .2s,box-shadow .2s}
+  .float-btn:hover,.float-btn:focus-visible{transform:scale(1.08);box-shadow:0 0 28px rgba(0,170,255,.8);outline:none}
+  .float-btn.active{background:#00aaff}
+  .lang-badge{position:absolute;top:-4px;right:-4px;background:#fff;color:#020b2d;font:700 10px Arial,sans-serif;border-radius:10px;padding:2px 5px}
+  #pf-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#08153f;color:#fff;border:1px solid #2f8cff;padding:10px 16px;border-radius:12px;z-index:2000;max-width:90%;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s}
+  #pf-toast.show{opacity:1}
+  #pf-chat{position:fixed;right:90px;bottom:20px;width:min(360px,calc(100vw - 24px));height:min(480px,70vh);display:none;flex-direction:column;background:linear-gradient(145deg,#08153f,#020b2d);border:1px solid rgba(120,180,255,.3);border-radius:22px;box-shadow:0 0 30px rgba(0,123,255,.35);z-index:1500;overflow:hidden;color:#fff}
+  #pf-chat.open{display:flex}
+  #pf-chat header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(47,140,255,.18);font-weight:700;color:#4da3ff}
+  #pf-chat header button{background:none;border:0;color:#fff;font-size:18px;cursor:pointer}
+  #pf-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .pf-m{max-width:85%;padding:10px 13px;border-radius:16px;line-height:1.5;font-size:14px;overflow-wrap:anywhere}
+  .pf-m.bot{background:rgba(255,255,255,.08);align-self:flex-start;border-bottom-left-radius:4px}
+  .pf-m.me{background:#2f8cff;align-self:flex-end;border-bottom-right-radius:4px}
+  #pf-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+  #pf-chips button{background:rgba(77,163,255,.15);color:#8fb4ff;border:1px solid rgba(77,163,255,.4);border-radius:14px;padding:5px 11px;font-size:12px;cursor:pointer}
+  #pf-form{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.1)}
+  #pf-input{flex:1;min-width:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:20px;padding:10px 14px;font-size:16px}
+  #pf-send{background:#2f8cff;color:#fff;border:0;border-radius:20px;padding:0 16px;cursor:pointer;font-weight:700}
+  @media (max-width:600px){#pf-chat{right:12px;bottom:184px;height:min(420px,60vh)}}`;
+  document.head.appendChild(css);
+
+  /* ---------- Buttons ---------- */
+  const btns = document.querySelectorAll(".floating-buttons .float-btn");
+  if (btns.length < 3) return;
+  const [langBtn, speakBtn, chatBtn] = btns;
+  const badge = document.createElement("span");
+  badge.className = "lang-badge";
+  langBtn.appendChild(badge);
+  [langBtn, speakBtn, chatBtn].forEach(b => {
+    b.setAttribute("role", "button");
+    b.tabIndex = 0;
+    b.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); b.click(); } });
+  });
+
+  const toastEl = document.createElement("div");
+  toastEl.id = "pf-toast";
+  document.body.appendChild(toastEl);
+  let toastT;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastT);
+    toastT = setTimeout(() => toastEl.classList.remove("show"), 3800);
+  }
+
+  /* ---------- Chat panel ---------- */
+  const chat = document.createElement("div");
+  chat.id = "pf-chat";
+  chat.innerHTML = '<header><span id="pf-title"></span><button id="pf-close" type="button">✕</button></header>' +
+    '<div id="pf-msgs" aria-live="polite"></div><div id="pf-chips"></div>' +
+    '<div id="pf-form"><input id="pf-input" type="text" autocomplete="off"><button id="pf-send" type="button"></button></div>';
+  document.body.appendChild(chat);
+  const msgs = chat.querySelector("#pf-msgs"), input = chat.querySelector("#pf-input");
+
+  function addMsg(text, who) {
+    const d = document.createElement("div");
+    d.className = "pf-m " + who;
+    d.textContent = text;
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  function answer(q) {
+    const s = q.toLowerCase();
+    const hit = KB.slice(1).find(e => e.k.some(k => s.includes(k)));
+    if (hit) return hit[lang];
+    if (/\b(hi|hello|hey|molo|molweni|sawubona|help)\b/.test(s)) return KB[0][lang];
+    return FALLBACK[lang];
+  }
+  function ask(label, query) {
+    addMsg(label, "me");
+    setTimeout(() => addMsg(answer(query || label), "bot"), 350);
+  }
+  function sendTyped() {
+    const v = input.value.trim();
+    if (!v) return;
+    input.value = "";
+    ask(v);
+  }
+  chat.querySelector("#pf-send").addEventListener("click", sendTyped);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") sendTyped(); });
+  chat.querySelector("#pf-close").addEventListener("click", () => toggleChat(false));
+  function toggleChat(open) {
+    chat.classList.toggle("open", open);
+    chatBtn.classList.toggle("active", open);
+    if (open) {
+      if (!msgs.children.length) addMsg(KB[0][lang], "bot");
+      input.focus();
+    }
+  }
+  chatBtn.addEventListener("click", () => toggleChat(!chat.classList.contains("open")));
+
+  function refreshChatUI() {
+    const u = UI[lang];
+    chat.querySelector("#pf-title").textContent = "🤖 " + u.title;
+    input.placeholder = u.ph;
+    chat.querySelector("#pf-send").textContent = u.send;
+    chat.querySelector("#pf-close").setAttribute("aria-label", u.close);
+    const chips = chat.querySelector("#pf-chips");
+    chips.innerHTML = "";
+    u.chips.forEach(([label, q]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label;
+      b.addEventListener("click", () => ask(label, q));
+      chips.appendChild(b);
+    });
+    langBtn.title = langBtn.ariaLabel = u.lang;
+    speakBtn.title = speakBtn.ariaLabel = speaking ? u.stop : u.speak;
+    chatBtn.title = chatBtn.ariaLabel = u.chat;
+    badge.textContent = lang === "xh" ? "XH" : "EN";
+  }
+
+  /* ---------- Translation ---------- */
+  function setLang(l) {
+    lang = l;
+    try { localStorage.setItem("pf-lang", l); } catch (e) {}
+    document.documentElement.lang = l === "xh" ? "xh" : "en";
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        const p = n.parentElement;
+        if (!p || p.closest("script,style,#pf-chat,#pf-toast")) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      if (l === "xh") {
+        const key = n.nodeValue.trim().replace(/\s+/g, " ");
+        if (XH[key]) {
+          if (!originals.has(n)) originals.set(n, n.nodeValue);
+          n.nodeValue = n.nodeValue.replace(n.nodeValue.trim(), XH[key]);
+        }
+      } else if (originals.has(n)) {
+        n.nodeValue = originals.get(n);
+        originals.delete(n);
+      }
+    });
+    const greet = document.getElementById("greet");
+    if (greet) {
+      const h = new Date().getHours();
+      greet.textContent = l === "xh" ? "Molo 👋" : (h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening") + " 👋";
+    }
+    try {
+      if (typeof roles !== "undefined") {
+        roles.splice(0, roles.length, ...(l === "xh" ? XH_ROLES : ["IT Support", "Networking", "Cybersecurity", "Web Development"]));
+      }
+    } catch (e) {}
+    if (speaking) stopSpeech();
+    refreshChatUI();
+  }
+  langBtn.addEventListener("click", () => {
+    setLang(lang === "en" ? "xh" : "en");
+    toast(lang === "xh" ? "isiXhosa" : "English");
+  });
+
+  /* ---------- Read aloud ---------- */
+  let speaking = false;
+  const synth = window.speechSynthesis;
+  function pageText() {
+    return ["#home .hero-text", "#education", "#experience", "#skills", "#certifications", "#references"]
+      .map(s => document.querySelector(s)).filter(Boolean)
+      .map(e => e.innerText.replace(/\s*\n\s*/g, ". ")).join(". ");
+  }
+  function pickVoice() {
+    const voices = synth.getVoices();
+    const prefs = lang === "xh" ? ["xh", "zu", "en-ZA", "en"] : ["en-ZA", "en-GB", "en"];
+    for (const p of prefs) {
+      const v = voices.find(x => x.lang.toLowerCase().startsWith(p.toLowerCase()));
+      if (v) return { voice: v, exact: p === prefs[0] };
+    }
+    return { voice: null, exact: false };
+  }
+  function stopSpeech() {
+    synth.cancel();
+    speaking = false;
+    speakBtn.classList.remove("active");
+    speakBtn.querySelector("i").className = "fas fa-volume-up";
+    speakBtn.title = speakBtn.ariaLabel = UI[lang].speak;
+  }
+  function startSpeech() {
+    const chunks = (pageText().match(/[^.!?]+[.!?]?/g) || []).map(s => s.trim()).filter(Boolean);
+    const { voice, exact } = pickVoice();
+    if (lang === "xh" && !exact) toast("No isiXhosa voice on this device, so the closest available voice is used.");
+    speaking = true;
+    speakBtn.classList.add("active");
+    speakBtn.querySelector("i").className = "fas fa-stop";
+    speakBtn.title = speakBtn.ariaLabel = UI[lang].stop;
+    chunks.forEach((text, i) => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = voice ? voice.lang : (lang === "xh" ? "xh-ZA" : "en-ZA");
+      if (voice) u.voice = voice;
+      u.rate = 0.95;
+      if (i === chunks.length - 1) u.onend = stopSpeech;
+      u.onerror = e => { if (e.error !== "interrupted" && e.error !== "canceled") stopSpeech(); };
+      synth.speak(u);
+    });
+  }
+  speakBtn.addEventListener("click", () => {
+    if (!synth) { toast("Your browser does not support read-aloud."); return; }
+    if (speaking) stopSpeech(); else startSpeech();
+  });
+  if (synth) { synth.getVoices(); window.addEventListener("beforeunload", () => synth.cancel()); }
+
+  /* ---------- Init ---------- */
+  refreshChatUI();
+  if (lang === "xh") setLang("xh");
+})();
+
+</script>
 </body>
-</html>
+        </html>
